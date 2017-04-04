@@ -1,0 +1,118 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%;">  
+              <div class="row">
+                            <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label control-label col-md-offset-4 col-sm-2">Название:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.name" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label  control-label col-md-offset-3 col-sm-3">Место взятия пробы:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.probePlace" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                            <div class="col-md-6 text-center">
+                <div class="form-group">
+                  <div class="row">
+                  <label class="label  control-label col-md-offset-3 col-sm-3">Дата взятия пробы:</label>
+                  <div>
+                      <div class="input-group date dr-picker dr-picker-single">
+                        <span class="wr-fld-dr-picker">
+                           <p-calendar class="col-sm-6" [(ngModel)]="filter.probeDate" [showIcon]="true"></p-calendar> <span style="margin-left:35px">{{value|date}}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label  control-label col-md-offset-4 col-sm-2">Описание:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.description" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+                        </div>
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <div class="form-group">
+                <div class="btn-group btn-group-flt-srch">
+                    <button type="button" class="btn btn-default btn-fltr btn-fltr-srch" (click)="aa()">
+                        <span class="fa fa-search"></span> Искать
+                    </button>
+                    <button type="button" class="btn btn-default btn-fltr btn-fltr-srch">
+                        <span class="fa fa-times"></span> Очистить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="tab-content container-fill" style="top:301px;">
+
+    <div class="row">
+        <button (click)="firstModal.open()">Загрузить файл</button>
+        <modal #firstModal>
+            <modal-header>
+                <h1>Выберите файл для загрузки</h1>
+            </modal-header>
+            <modal-content>
+                <input style="display: inline;" type="file" ng2FileSelect [uploader]="uploader" />
+            </modal-content>
+            <modal-footer>
+                <button class="btn btn-primary" (click)="uploadMyFile(); firstModal.close()">Загрузить</button>
+            </modal-footer>
+        </modal>
+    </div>
+
+  <div class="tab-hdr clearfix">
+        <h1>Реестр материалов</h1>
+        <div class="btn-group btn-group-tbl-control">
+            <button type="button" class="btn btn-default btn-no-brd btn-blue">Добавить</button>
+        </div>
+  </div>
+
+  <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 20%">
+            <mfDefaultSorter by="name">Название</mfDefaultSorter>
+        </th>
+        <th style="width: 50%">
+            <mfDefaultSorter by="probeDate">Дата взятия пробы</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+            <mfDefaultSorter by="probePlace">Место взятия пробы</mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+            <mfDefaultSorter by="description">Описание</mfDefaultSorter>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td>{{item.name}}</td>
+        <td>{{item.probeDate}}</td>
+        <td>{{item.probePlace}}</td>
+        <td>{{item.description}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+
+  </div>

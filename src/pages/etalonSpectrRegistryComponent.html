@@ -1,0 +1,109 @@
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%;">  
+              <div class="row">
+                            <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label control-label col-md-offset-4 col-sm-2">Длина волны:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.waveLength" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label  control-label col-md-offset-1 col-sm-5">Название строительного материала:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.buildMaterialName" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                            <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label control-label col-md-offset-2 col-sm-4">Название материала:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.materialName" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label  control-label col-md-offset-2 col-sm-4">Название хим. элемента:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.chemicalElementName" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              </div><div class="row">
+                            <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label control-label col-md-offset-2 col-sm-4">SpectrLinePersonName:</label>
+                  <div class="col-sm-5">
+                    <input [(ngModel)]="filter.spectrLinePersonName" type="text" class="inp-w100"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6"></div>
+              </div>
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <div class="form-group">
+                <div class="btn-group btn-group-flt-srch">
+                    <button type="button" class="btn btn-default btn-fltr btn-fltr-srch" (click)="aa()">
+                        <span class="fa fa-search"></span> Искать
+                    </button>
+                    <button type="button" class="btn btn-default btn-fltr btn-fltr-srch">
+                        <span class="fa fa-times"></span> Очистить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="tab-content container-fill" style="top:301px;">
+
+  <div class="tab-hdr clearfix">
+        <h1>Реестр эталонных спектров</h1>
+        <div class="btn-group btn-group-tbl-control">
+            <button type="button" class="btn btn-default btn-no-brd btn-blue">Добавить</button>
+        </div>
+  </div>
+
+  <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 20%">
+            <mfDefaultSorter by="waveLength">Длина волны</mfDefaultSorter>
+        </th>
+        <th style="width: 30%">
+            <mfDefaultSorter by="buildMaterialName">Название строительного материала</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+            <mfDefaultSorter by="materialName">Название материала</mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+            <mfDefaultSorter by="chemicalElementName">Название хим. элемента</mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+            <mfDefaultSorter by="spectrLinePersonName">SpectrLinePersonName</mfDefaultSorter>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td>{{item.waveLength}}</td>
+        <td>{{item.buildMaterialName}}</td>
+        <td>{{item.materialName}}</td>
+        <td>{{item.chemicalElementName}}</td>
+        <td>{{item.spectrLinePersonName}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+</div>

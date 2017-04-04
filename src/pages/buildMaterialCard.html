@@ -1,0 +1,112 @@
+
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
+<!-- <multi-select-dropdown (selectionModelChange)="onUpdate($event)"  [items]="dropItems" [selectionModel]="selected"></multi-select-dropdown> -->
+	<div class="no-tab-hdr">
+        <div wicket:id="buttonsPanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
+                    <span>Сохранить</span>
+                </button>
+                <button type="button" class="btn btn-default btn-no-brd btn-blue">
+                    <span>Закрыть</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active">
+        <div class="custom-block-theme test-card form-horizontal">
+            <div class="tab-hdr">
+            	<h1 style="color: #fff">Карточка строительного материала</h1>
+            </div>
+	<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Mark:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.mark" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+       <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Морозостойкость:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.frostResistance" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Краткое наименование:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.shortName" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">mechanicalStress:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.mechanicalStress" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Год производства:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.madeYear" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">SpectrFile:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.spectrFile" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Стандарты качества:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [items]="qualityStandartsData" [selectionModel]="selectedStandarts"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Объект исследования:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false"  [items]="researchObjectTypeData" [selectionModel]="selectedResearchObject"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Материалы:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [items]="materialsData" [selectionModel]="selectedMaterials"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Производитель:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false" [items]="manufacturerData" [selectionModel]="selectedManufacturer"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> </div>
+    </div>
