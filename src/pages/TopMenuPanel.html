@@ -3,12 +3,12 @@
     <div class="container-fluid container-fluid-default">
         <div class="navbar-header">
             <a class="navbar-brand" routerLink="/materials" routerLinkActive="active">
-                <img class="navbar-brand-logo" src="img/kartinka.png" alt=""/>
-                <span class="navbar-brand-title">НАЗВАНИЕ ПРОЕКТА</span>
+                
+                <span class="navbar-brand-title"><img class="navbar-brand-logo" src="img/kartinka.png" alt=""/>НАЗВАНИЕ ПРОЕКТА</span>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-nav-main">
+            <ul *ngIf="isLoggedIn()" class="nav navbar-nav navbar-nav-main">
                 <li>
                     <a routerLink="/materials" routerLinkActive="active"><span style="color: #f0f0f0;">Материалы</span><br><p class="invis-row">1</p></a>
                 </li>
@@ -33,9 +33,9 @@
                     </a>
                 </li>
             </ul>
-            <!--<div class="nav navbar-nav navbar-right notification">-->
-                <!--<span>25</span>-->
-            <!--</div>-->
+            <div class="nav navbar-nav navbar-right notification">
+                <span><button class="btn-success navbar-btn" (click)="logOut()">Выйти</button></span>
+            </div>
         </div><!-- /.navbar-collapse -->
         
     </div><!-- /.container-fluid -->
