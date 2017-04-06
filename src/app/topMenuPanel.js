@@ -9,15 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var authService_1 = require('./service/authService');
+var router_1 = require('@angular/router');
 var TopMenuPanelComponent = (function () {
-    function TopMenuPanelComponent() {
+    function TopMenuPanelComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
     }
+    TopMenuPanelComponent.prototype.isLoggedIn = function () {
+        return this.authService.isLoggedIn();
+    };
+    TopMenuPanelComponent.prototype.logOut = function () {
+        this.authService.logoutSimple();
+        this.router.navigate(['login']);
+    };
     TopMenuPanelComponent = __decorate([
         core_1.Component({
             selector: 'top-menu',
-            templateUrl: '../pages/TopMenuPanel.html'
+            templateUrl: '../pages/TopMenuPanel.html',
+            providers: [authService_1.AuthService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [authService_1.AuthService, router_1.Router])
     ], TopMenuPanelComponent);
     return TopMenuPanelComponent;
 }());

@@ -5,7 +5,7 @@ import { TopMenuPanelComponent } from './topMenuPanel';
 import { BasePageStructureComponent } from './basePageStructure';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/primeng';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions, RequestMethod, Headers} from '@angular/http';
 //registry imports
 import { BuildMaterialsRegistryComponent } from './registry/buildMaterialsRegistryComponent';
 import { SpectrsRegistryComponent } from './registry/spectrsRegistryComponent';
@@ -50,12 +50,23 @@ import { AuthService } from './service/authService';
    { path: '', pathMatch: 'full', redirectTo: 'materials/build', }, 
    { path: '**', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard]}
  ];
+
+class GlobalHttpOptions extends RequestOptions {
+        constructor() { 
+          super({ 
+            headers: new Headers({
+              'Auth_token': localStorage.getItem('auth_token')
+            })
+          });
+        }
+      }
+
 // 
 @NgModule({
   imports:      [ ModalModule, ToastyModule.forRoot(), FileUploadModule, HttpModule, FormsModule, BrowserModule, DataTableModule, CalendarModule, RouterModule.forRoot(appRoutes)],
   declarations: [ components ],
   bootstrap:    [ BasePageStructureComponent ],
-  providers : [LoggedInGuard, AuthService, LoggedOutGuard]
+  providers :   [ LoggedInGuard, AuthService, LoggedOutGuard, {provide: RequestOptions, useClass: GlobalHttpOptions}]
 })
 export class AppModule { 
 }

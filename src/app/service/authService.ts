@@ -21,8 +21,7 @@ export class AuthService {
 
 
   public isLoggedIn() : boolean {
-    console.log(localStorage.getItem('login'));
-    return this.loggedIn;
+    return localStorage.getItem('loggedIn') == 'true';
   }
 
 	public login(login : string, password : string) : Observable<boolean> {
@@ -43,8 +42,10 @@ export class AuthService {
   }
 
   public loginSimple(login : string, password : string) : boolean {
+    
     localStorage.setItem('login', login);
     localStorage.setItem('password', password);    
+    localStorage.setItem('loggedIn', 'true');
     console.log(localStorage);  
     this.loggedIn = true;
     console.log('loginSimple'+this.loggedIn);
@@ -52,6 +53,6 @@ export class AuthService {
   }
 
   public logoutSimple() {
-    this.loggedIn = false;
+    localStorage.setItem('loggedIn', 'false');
   }
 }

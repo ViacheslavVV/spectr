@@ -20,8 +20,7 @@ var AuthService = (function () {
         this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login"; // url to get login
     }
     AuthService.prototype.isLoggedIn = function () {
-        console.log(localStorage.getItem('login'));
-        return this.loggedIn;
+        return localStorage.getItem('loggedIn') == 'true';
     };
     AuthService.prototype.login = function (login, password) {
         var _this = this;
@@ -39,13 +38,14 @@ var AuthService = (function () {
     AuthService.prototype.loginSimple = function (login, password) {
         localStorage.setItem('login', login);
         localStorage.setItem('password', password);
+        localStorage.setItem('loggedIn', 'true');
         console.log(localStorage);
         this.loggedIn = true;
         console.log('loginSimple' + this.loggedIn);
         return true;
     };
     AuthService.prototype.logoutSimple = function () {
-        this.loggedIn = false;
+        localStorage.setItem('loggedIn', 'false');
     };
     AuthService = __decorate([
         core_1.Injectable(), 

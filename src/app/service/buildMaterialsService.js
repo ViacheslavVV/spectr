@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var http_2 = require('@angular/http');
 var globalSettings_1 = require('../service/globalSettings');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
@@ -35,7 +34,7 @@ var BuildMaterialsService = (function () {
     };
     BuildMaterialsService.prototype.createBuildMaterial = function (buildMaterial) {
         console.log('buildMaterial create');
-        return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial), new http_2.Headers({ 'Content-Type': 'application/json' }));
+        return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial));
     };
     BuildMaterialsService = __decorate([
         core_1.Injectable(), 

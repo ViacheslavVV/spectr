@@ -15,9 +15,9 @@ export class BuildMaterialsService {
 
 	private buildMaterialsUrl = GlobalSettings.SERVER_ADDRESS + "/bmaterials/all";  // url to get all build materials
 	private buildMaterialsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
-  private createBuildMaterialUrl : string = GlobalSettings.SERVER_ADDRESS + "/materials/add"; 
+  private createBuildMaterialUrl : string = GlobalSettings.SERVER_ADDRESS+"/materials/add"; 
 
-	constructor (private http: Http) {
+	constructor ( private http: Http) {
 	}
 
 	private extractData(res: Response) {
@@ -37,6 +37,7 @@ export class BuildMaterialsService {
 
     public createBuildMaterial(buildMaterial : BuildMaterial) : Observable<any> {
     	console.log('buildMaterial create');
-      return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial), new Headers({ 'Content-Type': 'application/json' }));
+
+      return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial));
     }
 }
