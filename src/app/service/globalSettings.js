@@ -2,7 +2,7 @@
 var GlobalSettings = (function () {
     function GlobalSettings() {
     }
-    GlobalSettings.SERVER_ADDRESS = 'http://requestb.in/1a5ov961'; // server url
+    GlobalSettings.SERVER_ADDRESS = 'http://localhost:3000/1a5ov961'; // server url
     return GlobalSettings;
 }());
 exports.GlobalSettings = GlobalSettings;

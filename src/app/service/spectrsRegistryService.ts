@@ -1,7 +1,8 @@
 import { Injectable }              from '@angular/core';
-import { Http, Response }          from '@angular/http';
+import { Response }          from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
+import { HttpClient } from './httpClient';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -13,7 +14,7 @@ export class SpectrsService {
 	private spectrsUrl = GlobalSettings.SERVER_ADDRESS + "/spectra/all";  // url to get all spectrs
 	private spectrsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/spectra/filters"; // url to get all with filters
 
-	constructor (private http: Http) {
+	constructor (private http: HttpClient) {
 	}
 
 	private extractData(res: Response) {

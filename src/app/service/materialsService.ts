@@ -1,8 +1,9 @@
 import { Injectable }              from '@angular/core';
-import { Http, Response }          from '@angular/http';
+import { Response }          from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
 import { Filter } from '../registry/materialsRegistryComponent';
+import { HttpClient } from './httpClient';
 
 
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +15,7 @@ export class MaterialsService {
 
 	private materialsUrl : string = GlobalSettings.SERVER_ADDRESS+"/materials/all";  // url to get all materials
 	private materialsUrlWithParams : string = GlobalSettings.SERVER_ADDRESS + "/materials/filters"; 
-	constructor (private http: Http) {
+	constructor (private http: HttpClient) {
 	}
 
 	private extractData(res: Response) {

@@ -39,6 +39,7 @@ var AuthService = (function () {
         localStorage.setItem('login', login);
         localStorage.setItem('password', password);
         localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('auth_token', '123123123123');
         console.log(localStorage);
         this.loggedIn = true;
         console.log('loginSimple' + this.loggedIn);

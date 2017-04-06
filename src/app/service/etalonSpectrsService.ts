@@ -1,8 +1,9 @@
 import { Injectable }              from '@angular/core';
-import { Http, Response }          from '@angular/http';
+import { Response }          from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
 import { Filter } from '../registry/etalonSpectrsRegistryComponent';
+import { HttpClient } from './httpClient';
 
 
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +15,7 @@ export class EtalonSpectrsService {
 
 	private etalonSpectrsUrl = GlobalSettings.SERVER_ADDRESS + "/etspectrs/all";  // url to get all etalon spectrs
 	private etalonSpectrsUrlWithParams = GlobalSettings.SERVER_ADDRESS+ "/etspectrs/filters";
-	constructor (private http: Http) {
+	constructor (private http: HttpClient) {
 	}
 
 	private extractData(res: Response) {

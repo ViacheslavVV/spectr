@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 var globalSettings_1 = require('../service/globalSettings');
+var httpClient_1 = require('./httpClient');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
 var EtalonSpectrsService = (function () {
@@ -33,7 +33,7 @@ var EtalonSpectrsService = (function () {
     };
     EtalonSpectrsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [httpClient_1.HttpClient])
     ], EtalonSpectrsService);
     return EtalonSpectrsService;
 }());

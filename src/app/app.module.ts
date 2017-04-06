@@ -25,6 +25,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './component/loggedInGuard';
 import { LoggedOutGuard } from './component/loggedOutGuard';
 import { AuthService } from './service/authService';
+import { HttpClient } from './service/httpClient';
 
  const components = [
 	 TopMenuPanelComponent, 
@@ -50,23 +51,13 @@ import { AuthService } from './service/authService';
    { path: '', pathMatch: 'full', redirectTo: 'materials/build', }, 
    { path: '**', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard]}
  ];
-
-class GlobalHttpOptions extends RequestOptions {
-        constructor() { 
-          super({ 
-            headers: new Headers({
-              'Auth_token': localStorage.getItem('auth_token')
-            })
-          });
-        }
-      }
-
+ 
 // 
 @NgModule({
   imports:      [ ModalModule, ToastyModule.forRoot(), FileUploadModule, HttpModule, FormsModule, BrowserModule, DataTableModule, CalendarModule, RouterModule.forRoot(appRoutes)],
   declarations: [ components ],
   bootstrap:    [ BasePageStructureComponent ],
-  providers :   [ LoggedInGuard, AuthService, LoggedOutGuard, {provide: RequestOptions, useClass: GlobalHttpOptions}]
+  providers :   [ LoggedInGuard, AuthService, LoggedOutGuard, HttpClient]
 })
 export class AppModule { 
 }

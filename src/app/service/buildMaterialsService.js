@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 var globalSettings_1 = require('../service/globalSettings');
+var httpClient_1 = require('./httpClient');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
 var BuildMaterialsService = (function () {
-    function BuildMaterialsService(http) {
-        this.http = http;
+    function BuildMaterialsService(httpClient) {
+        this.httpClient = httpClient;
         this.buildMaterialsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/all"; // url to get all build materials
         this.buildMaterialsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
         this.createBuildMaterialUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/add";
@@ -26,7 +26,7 @@ var BuildMaterialsService = (function () {
     };
     BuildMaterialsService.prototype.getBuildMaterials = function (filter) {
         console.log("getBuildMaterials service");
-        return this.http.get(this.getUrlForFetchWithParams(filter)).map(this.extractData);
+        return this.httpClient.get(this.getUrlForFetchWithParams(filter)).map(this.extractData);
     };
     BuildMaterialsService.prototype.getUrlForFetchWithParams = function (filter) {
         var params = filter.getAsGetParams();
@@ -34,11 +34,11 @@ var BuildMaterialsService = (function () {
     };
     BuildMaterialsService.prototype.createBuildMaterial = function (buildMaterial) {
         console.log('buildMaterial create');
-        return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial));
+        return this.httpClient.post(this.createBuildMaterialUrl, buildMaterial);
     };
     BuildMaterialsService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [httpClient_1.HttpClient])
     ], BuildMaterialsService);
     return BuildMaterialsService;
 }());

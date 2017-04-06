@@ -1,9 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -37,6 +32,7 @@ var router_1 = require('@angular/router');
 var loggedInGuard_1 = require('./component/loggedInGuard');
 var loggedOutGuard_1 = require('./component/loggedOutGuard');
 var authService_1 = require('./service/authService');
+var httpClient_1 = require('./service/httpClient');
 var components = [
     topMenuPanel_1.TopMenuPanelComponent,
     basePageStructure_1.BasePageStructureComponent,
@@ -60,17 +56,6 @@ var appRoutes = [
     { path: '', pathMatch: 'full', redirectTo: 'materials/build', },
     { path: '**', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] }
 ];
-var GlobalHttpOptions = (function (_super) {
-    __extends(GlobalHttpOptions, _super);
-    function GlobalHttpOptions() {
-        _super.call(this, {
-            headers: new http_1.Headers({
-                'Auth_token': localStorage.getItem('auth_token')
-            })
-        });
-    }
-    return GlobalHttpOptions;
-}(http_1.RequestOptions));
 // 
 var AppModule = (function () {
     function AppModule() {
@@ -80,7 +65,7 @@ var AppModule = (function () {
             imports: [ngx_modal_1.ModalModule, ng2_toasty_1.ToastyModule.forRoot(), ng2_file_upload_1.FileUploadModule, http_1.HttpModule, forms_1.FormsModule, platform_browser_1.BrowserModule, angular2_datatable_1.DataTableModule, primeng_1.CalendarModule, router_1.RouterModule.forRoot(appRoutes)],
             declarations: [components],
             bootstrap: [basePageStructure_1.BasePageStructureComponent],
-            providers: [loggedInGuard_1.LoggedInGuard, authService_1.AuthService, loggedOutGuard_1.LoggedOutGuard, { provide: http_1.RequestOptions, useClass: GlobalHttpOptions }]
+            providers: [loggedInGuard_1.LoggedInGuard, authService_1.AuthService, loggedOutGuard_1.LoggedOutGuard, httpClient_1.HttpClient]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

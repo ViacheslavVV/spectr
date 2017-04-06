@@ -1,9 +1,10 @@
 import { Injectable }              from '@angular/core';
-import { Http, Response }          from '@angular/http';
-import { Headers, RequestOptions } from '@angular/http';
+import { Response }          from '@angular/http';
+import { Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
 import { Filter } from '../registry/buildMaterialsRegistryComponent';
 import { BuildMaterial } from '../card/buildMaterialCard';
+import { HttpClient } from './httpClient';
 
 
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +18,7 @@ export class BuildMaterialsService {
 	private buildMaterialsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
   private createBuildMaterialUrl : string = GlobalSettings.SERVER_ADDRESS+"/materials/add"; 
 
-	constructor ( private http: Http) {
+	constructor ( private httpClient : HttpClient) {
 	}
 
 	private extractData(res: Response) {
@@ -27,7 +28,7 @@ export class BuildMaterialsService {
 
 	getBuildMaterials (filter : Filter): Observable<any[]> {
 		console.log("getBuildMaterials service");
-    return this.http.get(this.getUrlForFetchWithParams(filter)).map(this.extractData);
+    return this.httpClient.get(this.getUrlForFetchWithParams(filter)).map(this.extractData);
   	}
 
   	private getUrlForFetchWithParams(filter : Filter) : string {
@@ -37,7 +38,6 @@ export class BuildMaterialsService {
 
     public createBuildMaterial(buildMaterial : BuildMaterial) : Observable<any> {
     	console.log('buildMaterial create');
-
-      return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial));
+      return this.httpClient.post(this.createBuildMaterialUrl, buildMaterial);
     }
 }

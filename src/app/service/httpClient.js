@@ -10,29 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var HttpClientApp = (function () {
-    function HttpClientApp(http) {
+var http_2 = require('@angular/http');
+var HttpClient = (function () {
+    function HttpClient(http) {
         this.http = http;
     }
-    HttpClientApp.prototype.createAuthorizationHeader = function (headers) {
-        //headers.append('Authorization', 'token');
+    HttpClient.prototype.addDefaultHeaders = function (headers) {
+        headers.append('Auth_token', localStorage.getItem('auth_token'));
     };
-    HttpClientApp.prototype.get = function (url, headers) {
-        this.createAuthorizationHeader(headers);
-        return this.http.get(url, {
-            headers: headers
-        });
+    HttpClient.prototype.get = function (url, headers) {
+        if (headers == null) {
+            headers = new http_2.Headers();
+        }
+        this.addDefaultHeaders(headers);
+        return this.http.get(url, { headers: headers });
     };
-    HttpClientApp.prototype.post = function (url, data, headers) {
-        this.createAuthorizationHeader(headers);
-        var reqOptArgs = { headers: headers, body: JSON.stringify(data), method: http_1.RequestMethod.Post };
-        return this.http.post(url, data, reqOptArgs);
+    HttpClient.prototype.post = function (url, data, headers) {
+        if (headers == null) {
+            headers = new http_2.Headers();
+        }
+        this.addDefaultHeaders(headers);
+        return this.http.post(url, data, { headers: headers });
     };
-    HttpClientApp = __decorate([
+    HttpClient = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], HttpClientApp);
-    return HttpClientApp;
+    ], HttpClient);
+    return HttpClient;
 }());
-exports.HttpClientApp = HttpClientApp;
+exports.HttpClient = HttpClient;
 //# sourceMappingURL=httpClient.js.map
