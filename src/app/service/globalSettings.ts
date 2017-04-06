@@ -1,3 +1,3 @@
 export class GlobalSettings {
-	public static SERVER_ADDRESS : String = 'http://f2f9db5f.ngrok.io';  // server url
+	public static SERVER_ADDRESS : String = 'http://61191458.ngrok.io';  // server url
 }

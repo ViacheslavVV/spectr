@@ -54,14 +54,14 @@ export class BuildMaterialCardComponent {
 
 	onSave() : void {
 		this.setIdsToObject();
-		this.buildMaterialsService.createBuildMaterial(this.buildMaterial);
+		this.buildMaterialsService.createBuildMaterial(this.buildMaterial).subscribe(
+						data => console.log(data),
+                       error =>  console.log(error));
 	}
 }
 
 export class BuildMaterial {
-	public qualityStandarts : Array<number>;
-	public researchObjectTypeId : number;
-	public materials : Array<number>;
+	
 	public manufacturerId : number;
 	public mark : string;
 	public shortName : string;
@@ -69,4 +69,7 @@ export class BuildMaterial {
 	public mechanicalStress : string;
 	public madeYear : string;
 	public spectrFile : string;
+	public qualityStandarts : Array<number>;
+	public researchObjectTypeId : number;
+	public materials : Array<number>;
 }

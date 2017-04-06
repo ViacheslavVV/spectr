@@ -30,6 +30,7 @@ var ng2_toasty_1 = require('ng2-toasty');
 var ngx_modal_1 = require("ngx-modal");
 var router_1 = require('@angular/router');
 var loggedInGuard_1 = require('./component/loggedInGuard');
+var loggedOutGuard_1 = require('./component/loggedOutGuard');
 var authService_1 = require('./service/authService');
 var components = [
     topMenuPanel_1.TopMenuPanelComponent,
@@ -44,15 +45,15 @@ var components = [
     loginComponent_1.LoginComponent
 ];
 var appRoutes = [
-    { path: 'login', component: loginComponent_1.LoginComponent },
-    { path: 'materials/build', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent },
-    { path: 'material/build', component: buildMaterialCard_1.BuildMaterialCardComponent },
+    { path: 'login', component: loginComponent_1.LoginComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
+    { path: 'materials/build', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'material/build', component: buildMaterialCard_1.BuildMaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs', component: spectrsRegistryComponent_1.SpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
-    { path: 'researchObjects', component: researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent },
-    { path: 'materials', component: materialsRegistryComponent_1.MaterialsRegistryComponent },
-    { path: 'spectrs/etalon', component: etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent },
-    { path: '', pathMatch: 'full', redirectTo: 'materials/build' },
-    { path: '**', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent }
+    { path: 'researchObjects', component: researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'materials', component: materialsRegistryComponent_1.MaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'spectrs/etalon', component: etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: '', pathMatch: 'full', redirectTo: 'materials/build', },
+    { path: '**', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] }
 ];
 // 
 var AppModule = (function () {
@@ -63,7 +64,7 @@ var AppModule = (function () {
             imports: [ngx_modal_1.ModalModule, ng2_toasty_1.ToastyModule.forRoot(), ng2_file_upload_1.FileUploadModule, http_1.HttpModule, forms_1.FormsModule, platform_browser_1.BrowserModule, angular2_datatable_1.DataTableModule, primeng_1.CalendarModule, router_1.RouterModule.forRoot(appRoutes)],
             declarations: [components],
             bootstrap: [basePageStructure_1.BasePageStructureComponent],
-            providers: [loggedInGuard_1.LoggedInGuard, authService_1.AuthService]
+            providers: [loggedInGuard_1.LoggedInGuard, authService_1.AuthService, loggedOutGuard_1.LoggedOutGuard]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

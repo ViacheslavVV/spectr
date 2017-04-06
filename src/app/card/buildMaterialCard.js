@@ -51,7 +51,7 @@ var BuildMaterialCardComponent = (function () {
     };
     BuildMaterialCardComponent.prototype.onSave = function () {
         this.setIdsToObject();
-        this.buildMaterialsService.createBuildMaterial(this.buildMaterial);
+        this.buildMaterialsService.createBuildMaterial(this.buildMaterial).subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
     };
     BuildMaterialCardComponent = __decorate([
         core_1.Component({

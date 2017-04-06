@@ -6,16 +6,22 @@ import { AuthService } from '../service/authService';
 @Component({
   selector: 'login',
   providers: [AuthService],
-  template: `LoginComponent`
+  templateUrl: '../../pages/component/loginPage.html'
 })
 export class LoginComponent {
+  public loginName : string;
+  public password : string;
+
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(login : string, password : string) {
-    this.authService.login(login, password).subscribe((result) => {
-      if (result) {
-        this.router.navigate(['/']);
-      }
-    });
+  login() {
+    console.log(localStorage);
+    this.authService.loginSimple(this.loginName, this.password);
+    this.router.navigate(['']);
+    // this.authService.login(thisloginName, password).subscribe((result) => {
+    //   if (result) {
+    //     this.router.navigate(['']);
+    //   }
+    // });
   }
 }

@@ -17,11 +17,13 @@ import { MutliSelectDropdownComponent } from './component/multiselectComponent';
 import { LoginComponent } from './component/loginComponent';
 
 
+
 import { FileUploadModule } from 'ng2-file-upload';
 import { ToastyModule } from 'ng2-toasty';
 import { ModalModule } from "ngx-modal";
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './component/loggedInGuard';
+import { LoggedOutGuard } from './component/loggedOutGuard';
 import { AuthService } from './service/authService';
 
  const components = [
@@ -38,22 +40,22 @@ import { AuthService } from './service/authService';
  ];
 
  const appRoutes: Routes = [
-   { path: 'login', component: LoginComponent},
-   { path: 'materials/build', component: BuildMaterialsRegistryComponent },
-   { path: 'material/build', component: BuildMaterialCardComponent },
+   { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
+   { path: 'materials/build', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard] },
+   { path: 'material/build', component: BuildMaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs',      component: SpectrsRegistryComponent , canActivate: [LoggedInGuard]},
-   { path: 'researchObjects',      component: ResearchObjectsRegistryComponent },
-   { path: 'materials',      component: MaterialsRegistryComponent },
-   { path: 'spectrs/etalon',      component: EtalonSpectrsRegistryComponent },
-   { path: '', pathMatch: 'full', redirectTo: 'materials/build'}, 
-   { path: '**', component: BuildMaterialsRegistryComponent }
+   { path: 'researchObjects',      component: ResearchObjectsRegistryComponent, canActivate: [LoggedInGuard] },
+   { path: 'materials',      component: MaterialsRegistryComponent, canActivate: [LoggedInGuard] },
+   { path: 'spectrs/etalon',      component: EtalonSpectrsRegistryComponent, canActivate: [LoggedInGuard]  },
+   { path: '', pathMatch: 'full', redirectTo: 'materials/build', }, 
+   { path: '**', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard]}
  ];
 // 
 @NgModule({
   imports:      [ ModalModule, ToastyModule.forRoot(), FileUploadModule, HttpModule, FormsModule, BrowserModule, DataTableModule, CalendarModule, RouterModule.forRoot(appRoutes)],
   declarations: [ components ],
   bootstrap:    [ BasePageStructureComponent ],
-  providers : [LoggedInGuard, AuthService]
+  providers : [LoggedInGuard, AuthService, LoggedOutGuard]
 })
 export class AppModule { 
 }

@@ -13,8 +13,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class BuildMaterialsService {
 
-	private buildMaterialsUrl = GlobalSettings.SERVER_ADDRESS+"/bmaterials/all";  // url to get all build materials
-	private buildMaterialsUrlWithParams = GlobalSettings.SERVER_ADDRESS+"/bmaterials/filters";
+	private buildMaterialsUrl = GlobalSettings.SERVER_ADDRESS + "/bmaterials/all";  // url to get all build materials
+	private buildMaterialsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
+  private createBuildMaterialUrl : string = GlobalSettings.SERVER_ADDRESS + "/materials/add"; 
+
 	constructor (private http: Http) {
 	}
 
@@ -33,7 +35,8 @@ export class BuildMaterialsService {
     return params == "" ? this.buildMaterialsUrl : this.buildMaterialsUrlWithParams + "?" + params;
     }
 
-    public createBuildMaterial(buildMaterial : BuildMaterial) : void {
+    public createBuildMaterial(buildMaterial : BuildMaterial) : Observable<any> {
     	console.log('buildMaterial create');
+      return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial), new Headers({ 'Content-Type': 'application/json' }));
     }
 }

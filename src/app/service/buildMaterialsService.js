@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var http_2 = require('@angular/http');
 var globalSettings_1 = require('../service/globalSettings');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
@@ -18,6 +19,7 @@ var BuildMaterialsService = (function () {
         this.http = http;
         this.buildMaterialsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/all"; // url to get all build materials
         this.buildMaterialsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
+        this.createBuildMaterialUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/add";
     }
     BuildMaterialsService.prototype.extractData = function (res) {
         var body = res.json();
@@ -33,6 +35,7 @@ var BuildMaterialsService = (function () {
     };
     BuildMaterialsService.prototype.createBuildMaterial = function (buildMaterial) {
         console.log('buildMaterial create');
+        return this.http.post(this.createBuildMaterialUrl, JSON.stringify(buildMaterial), new http_2.Headers({ 'Content-Type': 'application/json' }));
     };
     BuildMaterialsService = __decorate([
         core_1.Injectable(), 

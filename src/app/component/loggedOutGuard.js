@@ -11,30 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var authService_1 = require('../service/authService');
-var LoginComponent = (function () {
-    function LoginComponent(authService, router) {
+var LoggedOutGuard = (function () {
+    function LoggedOutGuard(authService, router) {
         this.authService = authService;
         this.router = router;
     }
-    LoginComponent.prototype.login = function () {
-        console.log(localStorage);
-        this.authService.loginSimple(this.loginName, this.password);
-        this.router.navigate(['']);
-        // this.authService.login(thisloginName, password).subscribe((result) => {
-        //   if (result) {
-        //     this.router.navigate(['']);
-        //   }
-        // });
+    LoggedOutGuard.prototype.canActivate = function () {
+        var isLogged = this.authService.isLoggedIn();
+        if (isLogged) {
+            this.router.navigate(['']);
+        }
+        return !isLogged;
     };
-    LoginComponent = __decorate([
-        core_1.Component({
-            selector: 'login',
-            providers: [authService_1.AuthService],
-            templateUrl: '../../pages/component/loginPage.html'
-        }), 
+    LoggedOutGuard = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [authService_1.AuthService, router_1.Router])
-    ], LoginComponent);
-    return LoginComponent;
+    ], LoggedOutGuard);
+    return LoggedOutGuard;
 }());
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=loginComponent.js.map
+exports.LoggedOutGuard = LoggedOutGuard;
+//# sourceMappingURL=loggedOutGuard.js.map
