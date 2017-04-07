@@ -15,7 +15,7 @@ export class TopMenuPanelComponent  {
 	}
 
 	logOut() : void {
-		this.authService.logoutSimple();
+		this.authService.logout();
 		this.router.navigate(['login']);
 	}
 }

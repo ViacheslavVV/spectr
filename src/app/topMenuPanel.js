@@ -20,7 +20,7 @@ var TopMenuPanelComponent = (function () {
         return this.authService.isLoggedIn();
     };
     TopMenuPanelComponent.prototype.logOut = function () {
-        this.authService.logoutSimple();
+        this.authService.logout();
         this.router.navigate(['login']);
     };
     TopMenuPanelComponent = __decorate([

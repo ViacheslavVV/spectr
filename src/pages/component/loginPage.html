@@ -1,6 +1,7 @@
 <div class="parent">
     <div class="blockMy">
         <div> 
+        <span *ngIf="isError()" style="color:red;">{{errText}}</span>
         <div class="col-sm-12">
             <div class="form-group">
                 <label class="label control-label col-sm-6">Login:</label>

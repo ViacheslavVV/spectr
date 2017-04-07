@@ -11,17 +11,33 @@ import { AuthService } from '../service/authService';
 export class LoginComponent {
   public loginName : string;
   public password : string;
-
+  private _errPresent : boolean = false;
+  private incorrectDataMsg : string = 'Некорректные логин или пароль!';
+  private serverErrorMsg : string = 'Ошибка сервера!';
+  private errText : string;
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
+
     console.log(localStorage);
-    this.authService.loginSimple(this.loginName, this.password);
+    this.authService.login(this.loginName, this.password).subscribe(data => data ? this.loginOk() : this.loginFail(), error => this.loginAppFail());    
+  }
+
+  private loginOk() : void {
     this.router.navigate(['']);
-    // this.authService.login(thisloginName, password).subscribe((result) => {
-    //   if (result) {
-    //     this.router.navigate(['']);
-    //   }
-    // });
+  }
+
+  private loginFail() : void {
+    this._errPresent = true;
+    this.errText = this.incorrectDataMsg;
+  }
+
+  private loginAppFail() : void {
+    this._errPresent = true;
+    this.errText = this.serverErrorMsg;
+  }
+
+  isError() : boolean {
+    return this._errPresent;
   }
 }

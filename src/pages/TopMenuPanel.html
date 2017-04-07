@@ -33,7 +33,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="nav navbar-nav navbar-right notification">
+            <div *ngIf="isLoggedIn()" class="nav navbar-nav navbar-right notification">
                 <span><button class="btn-success navbar-btn" (click)="logOut()">Выйти</button></span>
             </div>
         </div><!-- /.navbar-collapse -->

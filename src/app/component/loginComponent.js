@@ -15,16 +15,28 @@ var LoginComponent = (function () {
     function LoginComponent(authService, router) {
         this.authService = authService;
         this.router = router;
+        this._errPresent = false;
+        this.incorrectDataMsg = 'Некорректные логин или пароль!';
+        this.serverErrorMsg = 'Ошибка сервера!';
     }
     LoginComponent.prototype.login = function () {
+        var _this = this;
         console.log(localStorage);
-        this.authService.loginSimple(this.loginName, this.password);
+        this.authService.login(this.loginName, this.password).subscribe(function (data) { return data ? _this.loginOk() : _this.loginFail(); }, function (error) { return _this.loginAppFail(); });
+    };
+    LoginComponent.prototype.loginOk = function () {
         this.router.navigate(['']);
-        // this.authService.login(thisloginName, password).subscribe((result) => {
-        //   if (result) {
-        //     this.router.navigate(['']);
-        //   }
-        // });
+    };
+    LoginComponent.prototype.loginFail = function () {
+        this._errPresent = true;
+        this.errText = this.incorrectDataMsg;
+    };
+    LoginComponent.prototype.loginAppFail = function () {
+        this._errPresent = true;
+        this.errText = this.serverErrorMsg;
+    };
+    LoginComponent.prototype.isError = function () {
+        return this._errPresent;
     };
     LoginComponent = __decorate([
         core_1.Component({

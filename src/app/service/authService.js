@@ -9,48 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 var globalSettings_1 = require('../service/globalSettings');
+var httpClient_1 = require('../service/httpClient');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.loggedIn = false;
         this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login"; // url to get login
     }
     AuthService.prototype.isLoggedIn = function () {
         return localStorage.getItem('loggedIn') == 'true';
     };
     AuthService.prototype.login = function (login, password) {
-        var _this = this;
         return this.http
-            .post('/login', JSON.stringify({}))
+            .post(this.authUrl, { "login": login, "password": password })
             .map(function (res) { return res.json(); })
             .map(function (res) {
-            if (res.success) {
-                localStorage.setItem('auth_token', res.auth_token);
-                _this.loggedIn = true;
+            if (res.success == true || res.success == 'true') {
+                localStorage.setItem('auth_token', res.authToken);
+                localStorage.setItem('loggedIn', 'true');
+                return true;
             }
-            return res.success;
+            return false;
         });
     };
-    AuthService.prototype.loginSimple = function (login, password) {
-        localStorage.setItem('login', login);
-        localStorage.setItem('password', password);
-        localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('auth_token', '123123123123');
-        console.log(localStorage);
-        this.loggedIn = true;
-        console.log('loginSimple' + this.loggedIn);
-        return true;
-    };
-    AuthService.prototype.logoutSimple = function () {
+    AuthService.prototype.logout = function () {
         localStorage.setItem('loggedIn', 'false');
+        localStorage.removeItem('auth_token');
     };
     AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [httpClient_1.HttpClient])
     ], AuthService);
     return AuthService;
 }());
