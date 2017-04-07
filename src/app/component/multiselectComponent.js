@@ -22,7 +22,7 @@ var MutliSelectDropdownComponent = (function () {
     };
     MutliSelectDropdownComponent.prototype.getLabel = function () {
         return this.allowMultiselect ? 'Выбрано ' + this.selectionModel.length :
-            (this.selectionModel == null || this.selectionModel.length == 0) ? 'Выберите значение' : this.selectionModel[0].text;
+            (this.selectionModel == null || this.selectionModel.length == 0) ? 'Выберите значение' : this.selectionModel[0].name;
     };
     MutliSelectDropdownComponent.prototype.clearSearch = function () {
         this.searchFilter = '';
