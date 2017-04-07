@@ -9,36 +9,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var buildMaterialsService_1 = require("../service/buildMaterialsService");
+var dropdownProviderService_1 = require('../service/dropdownProviderService');
 var BuildMaterialCardComponent = (function () {
-    function BuildMaterialCardComponent(buildMaterialsService) {
+    function BuildMaterialCardComponent(buildMaterialsService, dropdownProviderService, router) {
+        var _this = this;
         this.buildMaterialsService = buildMaterialsService;
+        this.dropdownProviderService = dropdownProviderService;
+        this.router = router;
         /**
          * данные для выпадающего списка (qualityStandarts)
          */
-        this.qualityStandartsData = [{ id: 1, text: 'Standart1' }, { id: 2, text: 'Standart2' }, { id: 3, text: 'Standart3' }, { id: 4, text: 'Standart4' },
-            { id: 5, text: 'Standart5' }, { id: 6, text: 'Standart6' }, { id: 7, text: 'Standart7' }, { id: 8, text: 'Standart8' }, { id: 9, text: 'Standart9' }, { id: 10, text: 'Standart10' }];
+        this.qualityStandartsData = new Array();
         this.selectedStandarts = [];
         /**
          * данные для выпадающего списка (researchObjectTypeId)
          */
-        this.researchObjectTypeData = [{ id: 1, text: 'ResObject1' }, { id: 2, text: 'ResObject2' }, { id: 3, text: 'ResObject3' }, { id: 4, text: 'ResObject4' },
-            { id: 5, text: 'ResObject5' }, { id: 6, text: 'ResObject6' }, { id: 7, text: 'ResObject7' }, { id: 8, text: 'ResObject8' }, { id: 9, text: 'ResObject9' }, { id: 10, text: 'ResObject10' }];
+        this.researchObjectTypeData = new Array();
         this.selectedResearchObject = [];
         /**
          * данные для выпадающего списка (materials)
          */
-        this.materialsData = [{ id: 1, text: 'material1' }, { id: 2, text: 'material2' }];
+        this.materialsData = new Array();
         this.selectedMaterials = [];
         /**
          * данные для выпадающего списка (manufacturerId)
          */
-        this.manufacturerData = [{ id: 1, text: 'manufacturer1' }, { id: 2, text: 'manufacturer2' }];
+        this.manufacturerData = new Array();
         this.selectedManufacturer = [];
         /**
          * новый элемент, ПРИВЯЗКА К НЕМУ, А СПИСКИ УСТАНОВИТЬ ПОСЛЕ НАЖАТИЯ "СОХРАНИТЬ"
          */
         this.buildMaterial = new BuildMaterial();
+        this.dropdownProviderService.getQualityStandarts().subscribe(function (data) { return _this.qualityStandartsData = data; }, function (error) { return _this.qualityStandartsData = new Array(); });
+        this.dropdownProviderService.getMaterials().subscribe(function (data) { return _this.materialsData = data; }, function (error) { return _this.materialsData = new Array(); });
+        this.dropdownProviderService.getManufacturers().subscribe(function (data) { return _this.manufacturerData = data; }, function (error) { return _this.manufacturerData = new Array(); });
+        this.dropdownProviderService.getResearchObjecTypes().subscribe(function (data) { return _this.researchObjectTypeData = data; }, function (error) { return _this.researchObjectTypeData = new Array(); });
     }
     /**
      * Установить все id из выпадающий списков в объект
@@ -50,8 +57,12 @@ var BuildMaterialCardComponent = (function () {
         this.buildMaterial.researchObjectTypeId = this.selectedResearchObject.length == 0 ? null : this.selectedResearchObject[0].id;
     };
     BuildMaterialCardComponent.prototype.onSave = function () {
+        var _this = this;
         this.setIdsToObject();
-        this.buildMaterialsService.createBuildMaterial(this.buildMaterial).subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
+        this.buildMaterialsService.createBuildMaterial(this.buildMaterial).subscribe(function (data) { console.log(data); _this.toRegistr(); }, function (error) { return console.log(error); });
+    };
+    BuildMaterialCardComponent.prototype.toRegistr = function () {
+        this.router.navigate(['materials/build']);
     };
     BuildMaterialCardComponent = __decorate([
         core_1.Component({
@@ -59,7 +70,7 @@ var BuildMaterialCardComponent = (function () {
             templateUrl: '../../pages/buildMaterialCard.html',
             providers: [buildMaterialsService_1.BuildMaterialsService]
         }), 
-        __metadata('design:paramtypes', [buildMaterialsService_1.BuildMaterialsService])
+        __metadata('design:paramtypes', [buildMaterialsService_1.BuildMaterialsService, dropdownProviderService_1.DropdownProviderService, router_1.Router])
     ], BuildMaterialCardComponent);
     return BuildMaterialCardComponent;
 }());

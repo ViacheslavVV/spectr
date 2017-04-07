@@ -16,7 +16,7 @@ export class BuildMaterialsService {
 
 	private buildMaterialsUrl = GlobalSettings.SERVER_ADDRESS + "/bmaterials/all";  // url to get all build materials
 	private buildMaterialsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
-  private createBuildMaterialUrl : string = GlobalSettings.SERVER_ADDRESS+"/materials/add"; 
+  private createBuildMaterialUrl : string = GlobalSettings.SERVER_ADDRESS+"/bmaterials/add"; 
 
 	constructor ( private httpClient : HttpClient) {
 	}

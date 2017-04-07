@@ -2,7 +2,7 @@
 var GlobalSettings = (function () {
     function GlobalSettings() {
     }
-    GlobalSettings.SERVER_ADDRESS = 'http://localhost:3000/1a5ov961'; // server url
+    GlobalSettings.SERVER_ADDRESS = 'http://952cf0b6.ngrok.io'; // server url
     return GlobalSettings;
 }());
 exports.GlobalSettings = GlobalSettings;

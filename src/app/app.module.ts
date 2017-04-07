@@ -26,6 +26,7 @@ import { LoggedInGuard } from './component/loggedInGuard';
 import { LoggedOutGuard } from './component/loggedOutGuard';
 import { AuthService } from './service/authService';
 import { HttpClient } from './service/httpClient';
+import { DropdownProviderService } from './service/dropdownProviderService';
 
  const components = [
 	 TopMenuPanelComponent, 
@@ -57,7 +58,7 @@ import { HttpClient } from './service/httpClient';
   imports:      [ ModalModule, ToastyModule.forRoot(), FileUploadModule, HttpModule, FormsModule, BrowserModule, DataTableModule, CalendarModule, RouterModule.forRoot(appRoutes)],
   declarations: [ components ],
   bootstrap:    [ BasePageStructureComponent ],
-  providers :   [ LoggedInGuard, AuthService, LoggedOutGuard, HttpClient]
+  providers :   [ LoggedInGuard, AuthService, LoggedOutGuard, HttpClient, DropdownProviderService]
 })
 export class AppModule { 
 }

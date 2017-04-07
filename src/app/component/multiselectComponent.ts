@@ -2,7 +2,7 @@ import { Input, Output, Component, EventEmitter } from '@angular/core';
 
 export interface DropdownItem {
   id: number,
-  text: string
+  name: string
 }
 
 @Component({
@@ -28,7 +28,7 @@ export interface DropdownItem {
         <li role="presentation" *ngFor="let item of items">
           <a class="link-dropdown-decoration" role="menuitem" (click)="toggleSelectedItem($event, item, isChecked(item.id))">
             <span class="glyphicon" [class.glyphicon-ok]="isChecked(item.id)"></span>
-            {{item.text}}
+            {{item.name}}
           </a>
           </li>
         <li *ngIf="items == null || items.length == 0">No items</li>

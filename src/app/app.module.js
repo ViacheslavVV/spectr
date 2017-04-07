@@ -33,6 +33,7 @@ var loggedInGuard_1 = require('./component/loggedInGuard');
 var loggedOutGuard_1 = require('./component/loggedOutGuard');
 var authService_1 = require('./service/authService');
 var httpClient_1 = require('./service/httpClient');
+var dropdownProviderService_1 = require('./service/dropdownProviderService');
 var components = [
     topMenuPanel_1.TopMenuPanelComponent,
     basePageStructure_1.BasePageStructureComponent,
@@ -65,7 +66,7 @@ var AppModule = (function () {
             imports: [ngx_modal_1.ModalModule, ng2_toasty_1.ToastyModule.forRoot(), ng2_file_upload_1.FileUploadModule, http_1.HttpModule, forms_1.FormsModule, platform_browser_1.BrowserModule, angular2_datatable_1.DataTableModule, primeng_1.CalendarModule, router_1.RouterModule.forRoot(appRoutes)],
             declarations: [components],
             bootstrap: [basePageStructure_1.BasePageStructureComponent],
-            providers: [loggedInGuard_1.LoggedInGuard, authService_1.AuthService, loggedOutGuard_1.LoggedOutGuard, httpClient_1.HttpClient]
+            providers: [loggedInGuard_1.LoggedInGuard, authService_1.AuthService, loggedOutGuard_1.LoggedOutGuard, httpClient_1.HttpClient, dropdownProviderService_1.DropdownProviderService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

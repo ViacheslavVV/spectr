@@ -18,7 +18,7 @@ var BuildMaterialsService = (function () {
         this.httpClient = httpClient;
         this.buildMaterialsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/all"; // url to get all build materials
         this.buildMaterialsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/filters";
-        this.createBuildMaterialUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/add";
+        this.createBuildMaterialUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/add";
     }
     BuildMaterialsService.prototype.extractData = function (res) {
         var body = res.json();

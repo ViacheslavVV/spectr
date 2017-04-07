@@ -13,10 +13,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DropdownProviderService {
 
-	private materialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/materials/dropdown";  // url to get all build materials
-	private manufacturersDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/manufacturers/dropdown";
-  private researchObjectTypesUrl = GlobalSettings.SERVER_ADDRESS+"/researchObjTypes/dropdown"; 
-  private qualityStandartssUrl = GlobalSettings.SERVER_ADDRESS+"/qualitys/dropdown"; 
+	private materialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/materials/idname";
+	private manufacturersDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
+  private researchObjectTypesUrl = GlobalSettings.SERVER_ADDRESS+"/rotype/idname"; 
+  private qualityStandartssUrl = GlobalSettings.SERVER_ADDRESS+"/qstandarts/idname"; 
 
 	constructor ( private httpClient : HttpClient) {
 	}

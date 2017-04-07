@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { BuildMaterialsService } from "../service/buildMaterialsService";
 import { MutliSelectDropdownComponent, DropdownItem } from '../component/multiselectComponent';
+import { DropdownProviderService } from '../service/dropdownProviderService';
+
 
 @Component({
   selector: '<build-material>',
@@ -12,26 +16,24 @@ export class BuildMaterialCardComponent {
 	/**
 	 * данные для выпадающего списка (qualityStandarts)
 	 */
-	qualityStandartsData : Array<DropdownItem> = [ {id: 1, text: 'Standart1'}, {id: 2, text:'Standart2'}, {id: 3, text: 'Standart3'}, {id: 4, text:'Standart4'}, 
-	{id: 5, text: 'Standart5'}, {id: 6, text:'Standart6'}, {id: 7, text: 'Standart7'}, {id: 8, text:'Standart8'}, {id: 9, text: 'Standart9'}, {id: 10, text:'Standart10'} ];
+	qualityStandartsData : Array<DropdownItem> = new Array<DropdownItem>();
 	selectedStandarts :  Array<DropdownItem> = [];
 
 	/**
 	 * данные для выпадающего списка (researchObjectTypeId)
 	 */
-	researchObjectTypeData : Array<DropdownItem> = [ {id: 1, text: 'ResObject1'}, {id: 2, text:'ResObject2'}, {id: 3, text: 'ResObject3'}, {id: 4, text:'ResObject4'}, 
-	{id: 5, text: 'ResObject5'}, {id: 6, text:'ResObject6'}, {id: 7, text: 'ResObject7'}, {id: 8, text:'ResObject8'}, {id: 9, text: 'ResObject9'}, {id: 10, text:'ResObject10'} ];
+	researchObjectTypeData : Array<DropdownItem> = new Array<DropdownItem>();
 	selectedResearchObject: Array<DropdownItem> = [];
 	/**
 	 * данные для выпадающего списка (materials)
 	 */
-	materialsData : Array<DropdownItem> = [ {id: 1, text: 'material1'}, {id: 2, text:'material2'} ];
+	materialsData : Array<DropdownItem> = new Array<DropdownItem>();
 	selectedMaterials : Array<DropdownItem> = [];
 
 	/**
 	 * данные для выпадающего списка (manufacturerId)
 	 */
-	manufacturerData : Array<DropdownItem> = [ {id: 1, text: 'manufacturer1'}, {id: 2, text:'manufacturer2'} ];
+	manufacturerData : Array<DropdownItem> = new Array<DropdownItem>();
 	selectedManufacturer : Array<DropdownItem> = [];
 
 	/**
@@ -39,7 +41,11 @@ export class BuildMaterialCardComponent {
 	 */
 	private buildMaterial : BuildMaterial = new BuildMaterial();
 
-	constructor(private buildMaterialsService : BuildMaterialsService) {
+	constructor(private buildMaterialsService : BuildMaterialsService, private dropdownProviderService : DropdownProviderService, private router : Router) {
+		this.dropdownProviderService.getQualityStandarts().subscribe(data => this.qualityStandartsData = data , error => this.qualityStandartsData = new Array<DropdownItem>());
+		this.dropdownProviderService.getMaterials().subscribe(data => this.materialsData =  data, error => this.materialsData = new Array<DropdownItem>());
+		this.dropdownProviderService.getManufacturers().subscribe(data => this.manufacturerData =  data , error => this.manufacturerData = new Array<DropdownItem>());
+		this.dropdownProviderService.getResearchObjecTypes().subscribe(data => this.researchObjectTypeData =  data , error => this.researchObjectTypeData = new Array<DropdownItem>());
 	}
 
 	/**
@@ -55,8 +61,13 @@ export class BuildMaterialCardComponent {
 	onSave() : void {
 		this.setIdsToObject();
 		this.buildMaterialsService.createBuildMaterial(this.buildMaterial).subscribe(
-						data => console.log(data),
+						data => {console.log(data); this.toRegistr();},
                        error =>  console.log(error));
+
+	}
+
+	toRegistr() : void {
+		this.router.navigate(['materials/build']);
 	}
 }
 
