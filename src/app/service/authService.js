@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var globalSettings_1 = require('../service/globalSettings');
 var httpClient_1 = require('../service/httpClient');
 require('rxjs/add/operator/catch');
@@ -16,14 +17,17 @@ require('rxjs/add/operator/map');
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login"; // url to get login
+        this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login/auth"; // url to get login
     }
     AuthService.prototype.isLoggedIn = function () {
         return localStorage.getItem('loggedIn') == 'true';
     };
     AuthService.prototype.login = function (login, password) {
+        var headers = new http_1.Headers();
+        headers.append('login', login);
+        headers.append('password', password);
         return this.http
-            .post(this.authUrl, { "login": login, "password": password })
+            .post(this.authUrl, {}, headers)
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (res.success == true || res.success == 'true') {

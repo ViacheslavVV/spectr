@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-	private authUrl : string = GlobalSettings.SERVER_ADDRESS+"/login";  // url to get login
+	private authUrl : string = GlobalSettings.SERVER_ADDRESS+"/login/auth";  // url to get login
 	constructor (private http: HttpClient) {
 	}
 
@@ -25,10 +25,13 @@ export class AuthService {
   }
 
 	public login(login : string, password : string) : Observable<boolean> {
+    let headers = new Headers();
+    headers.append('login', login);
+    headers.append('password', password);
     return this.http
       .post(
         this.authUrl, 
-        {"login":login, "password":password}
+        {}, headers
       )
       .map(res => res.json())
       .map((res) => {

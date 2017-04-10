@@ -11,7 +11,7 @@ export class HttpClient {
 	}
 
   private addDefaultHeaders(headers : Headers) : void {
-    headers.append('Auth_token', localStorage.getItem('auth_token'));
+    headers.append('Auth-token', localStorage.getItem('auth_token'));
   }
 
   public get(url : string, headers? : Headers) : Observable<Response> {

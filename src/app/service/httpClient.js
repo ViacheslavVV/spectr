@@ -16,7 +16,7 @@ var HttpClient = (function () {
         this.http = http;
     }
     HttpClient.prototype.addDefaultHeaders = function (headers) {
-        headers.append('Auth_token', localStorage.getItem('auth_token'));
+        headers.append('Auth-token', localStorage.getItem('auth_token'));
     };
     HttpClient.prototype.get = function (url, headers) {
         if (headers == null) {
