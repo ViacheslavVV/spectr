@@ -8,11 +8,17 @@ import { CalendarModule } from 'primeng/primeng';
 import { HttpModule, RequestOptions, RequestMethod, Headers} from '@angular/http';
 //registry imports
 import { BuildMaterialsRegistryComponent } from './registry/buildMaterialsRegistryComponent';
-import { SpectrsRegistryComponent } from './registry/spectrsRegistryComponent';
-import { ResearchObjectsRegistryComponent } from './registry/researchObjectsRegistryComponent';
-import { MaterialsRegistryComponent } from './registry/materialsRegistryComponent';
-import { EtalonSpectrsRegistryComponent } from './registry/etalonSpectrsRegistryComponent';
 import { BuildMaterialCardComponent } from './card/buildMaterialCard';
+
+import { SpectrsRegistryComponent } from './registry/spectrsRegistryComponent';
+import { SpectrCardComponent } from './card/spectrCard';
+
+import { ResearchObjectsRegistryComponent } from './registry/researchObjectsRegistryComponent';
+
+import { MaterialsRegistryComponent } from './registry/materialsRegistryComponent';
+import { MaterialCardComponent } from './card/materialCard';
+
+import { EtalonSpectrsRegistryComponent } from './registry/etalonSpectrsRegistryComponent';
 import { MutliSelectDropdownComponent } from './component/multiselectComponent';
 import { LoginComponent } from './component/loginComponent';
 
@@ -32,8 +38,10 @@ import { DropdownProviderService } from './service/dropdownProviderService';
 	 TopMenuPanelComponent, 
 	 BasePageStructureComponent,
 	 BuildMaterialsRegistryComponent, 
-	 SpectrsRegistryComponent, 
+	 SpectrsRegistryComponent,
+   SpectrCardComponent, 
 	 MaterialsRegistryComponent, 
+   MaterialCardComponent,
 	 ResearchObjectsRegistryComponent, 
 	 EtalonSpectrsRegistryComponent,
    BuildMaterialCardComponent,
@@ -46,8 +54,10 @@ import { DropdownProviderService } from './service/dropdownProviderService';
    { path: 'materials/build', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard] },
    { path: 'material/build', component: BuildMaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs',      component: SpectrsRegistryComponent , canActivate: [LoggedInGuard]},
+   { path: 'spectr',      component: SpectrCardComponent , canActivate: [LoggedInGuard]},
    { path: 'researchObjects',      component: ResearchObjectsRegistryComponent, canActivate: [LoggedInGuard] },
    { path: 'materials',      component: MaterialsRegistryComponent, canActivate: [LoggedInGuard] },
+   { path: 'material',      component: MaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs/etalon',      component: EtalonSpectrsRegistryComponent, canActivate: [LoggedInGuard]  },
    { path: '', pathMatch: 'full', redirectTo: 'materials/build', }, 
    { path: '**', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard]}

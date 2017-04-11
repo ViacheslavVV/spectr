@@ -16,7 +16,10 @@ export class DropdownProviderService {
 	private materialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/materials/idname";
 	private manufacturersDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
   private researchObjectTypesUrl = GlobalSettings.SERVER_ADDRESS+"/rotype/idname"; 
-  private qualityStandartssUrl = GlobalSettings.SERVER_ADDRESS+"/qstandarts/idname"; 
+  private qualityStandartsUrl = GlobalSettings.SERVER_ADDRESS+"/qstandarts/idname"; 
+  private researchPassportsUrl = GlobalSettings.SERVER_ADDRESS+"/respassports/idname"
+  private chemicalElementsUrl = GlobalSettings.SERVER_ADDRESS+"/chemelements/idname";
+  private spectrLinesUrl = GlobalSettings.SERVER_ADDRESS+"/spectrlines/idname";
 
 	constructor ( private httpClient : HttpClient) {
 	}
@@ -34,7 +37,19 @@ export class DropdownProviderService {
   }
 
   getQualityStandarts() : Observable<DropdownItem[]> {
-    return this.httpClient.get(this.qualityStandartssUrl).map(this.extractData);
+    return this.httpClient.get(this.qualityStandartsUrl).map(this.extractData);
+  }
+
+  getResearchPassports() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.researchPassportsUrl).map(this.extractData);
+  }
+
+  getChemicalElements() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.chemicalElementsUrl).map(this.extractData);
+  }
+
+  getSpectrLines() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.spectrLinesUrl).map(this.extractData);
   }
 
 	private extractData(res: Response) {

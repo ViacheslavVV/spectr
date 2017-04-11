@@ -3,6 +3,7 @@ import { Response }          from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
 import { HttpClient } from './httpClient';
+import { Spectr } from '../card/spectrCard';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -11,6 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SpectrsService {
 
+	private createSpectrUrl = GlobalSettings.SERVER_ADDRESS + "/spectrs/add";
 	private spectrsUrl = GlobalSettings.SERVER_ADDRESS + "/spectra/all";  // url to get all spectrs
 	private spectrsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/spectra/filters"; // url to get all with filters
 
@@ -30,5 +32,9 @@ export class SpectrsService {
     private getUrlForFetchWithParams(filter : any) : string {
     	let params = filter.getAsGetParams();
     return params == "" ? this.spectrsUrl : this.spectrsUrlWithParams + "?"+params;
+    }
+
+    public createSpectr(spectr : Spectr) : Observable<Response> {
+    	return this.http.post(this.createSpectrUrl, spectr);
     }
 }

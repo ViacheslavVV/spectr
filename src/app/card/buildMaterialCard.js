@@ -67,7 +67,7 @@ var BuildMaterialCardComponent = (function () {
     BuildMaterialCardComponent = __decorate([
         core_1.Component({
             selector: '<build-material>',
-            templateUrl: '../../pages/buildMaterialCard.html',
+            templateUrl: '../../pages/card/buildMaterialCard.html',
             providers: [buildMaterialsService_1.BuildMaterialsService]
         }), 
         __metadata('design:paramtypes', [buildMaterialsService_1.BuildMaterialsService, dropdownProviderService_1.DropdownProviderService, router_1.Router])

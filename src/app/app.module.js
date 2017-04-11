@@ -18,11 +18,13 @@ var primeng_1 = require('primeng/primeng');
 var http_1 = require('@angular/http');
 //registry imports
 var buildMaterialsRegistryComponent_1 = require('./registry/buildMaterialsRegistryComponent');
+var buildMaterialCard_1 = require('./card/buildMaterialCard');
 var spectrsRegistryComponent_1 = require('./registry/spectrsRegistryComponent');
+var spectrCard_1 = require('./card/spectrCard');
 var researchObjectsRegistryComponent_1 = require('./registry/researchObjectsRegistryComponent');
 var materialsRegistryComponent_1 = require('./registry/materialsRegistryComponent');
+var materialCard_1 = require('./card/materialCard');
 var etalonSpectrsRegistryComponent_1 = require('./registry/etalonSpectrsRegistryComponent');
-var buildMaterialCard_1 = require('./card/buildMaterialCard');
 var multiselectComponent_1 = require('./component/multiselectComponent');
 var loginComponent_1 = require('./component/loginComponent');
 var ng2_file_upload_1 = require('ng2-file-upload');
@@ -39,7 +41,9 @@ var components = [
     basePageStructure_1.BasePageStructureComponent,
     buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent,
     spectrsRegistryComponent_1.SpectrsRegistryComponent,
+    spectrCard_1.SpectrCardComponent,
     materialsRegistryComponent_1.MaterialsRegistryComponent,
+    materialCard_1.MaterialCardComponent,
     researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent,
     etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent,
     buildMaterialCard_1.BuildMaterialCardComponent,
@@ -51,8 +55,10 @@ var appRoutes = [
     { path: 'materials/build', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'material/build', component: buildMaterialCard_1.BuildMaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs', component: spectrsRegistryComponent_1.SpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'spectr', component: spectrCard_1.SpectrCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'researchObjects', component: researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'materials', component: materialsRegistryComponent_1.MaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'material', component: materialCard_1.MaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs/etalon', component: etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: '', pathMatch: 'full', redirectTo: 'materials/build', },
     { path: '**', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] }

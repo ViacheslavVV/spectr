@@ -21,7 +21,8 @@ export class AuthService {
 
 
   public isLoggedIn() : boolean {
-    return localStorage.getItem('loggedIn') == 'true';
+    return true;
+    //return localStorage.getItem('loggedIn') == 'true';
   }
 
 	public login(login : string, password : string) : Observable<boolean> {

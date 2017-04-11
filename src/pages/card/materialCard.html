@@ -1,0 +1,72 @@
+
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
+<!-- <multi-select-dropdown (selectionModelChange)="onUpdate($event)"  [items]="dropItems" [selectionModel]="selected"></multi-select-dropdown> -->
+	<div class="no-tab-hdr">
+        <div wicket:id="buttonsPanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
+                    <span>Сохранить</span>
+                </button>
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="toRegistr()">
+                    <span>Закрыть</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active">
+        <div class="custom-block-theme test-card form-horizontal">
+            <div class="tab-hdr">
+            	<h1 style="color: #fff">Карточка материала</h1>
+            </div>
+	<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Название:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="material.name" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+       <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Дата взятия пробы:</label>
+                <div class="col-lg-6">
+                      <div class="input-group date dr-picker dr-picker-single">
+                        <span class="wr-fld-dr-picker">
+                           <p-calendar [(ngModel)]="material.probeDate" [showIcon]="true"></p-calendar> <span style="margin-left:35px">{{value|date}}</span>
+                        </span>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Место взятия пробы:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="material.probePlace" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Файл спектра:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="material.spectrFile" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label  class="label control-label col-lg-2">Описание:</label>
+                <div class="col-lg-10">
+                    <textarea style="width:100%;" [(ngModel)]="material.description" class="inp-w100"></textarea> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div> </div>
+    </div>

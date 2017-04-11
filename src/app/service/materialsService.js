@@ -16,6 +16,7 @@ require('rxjs/add/operator/map');
 var MaterialsService = (function () {
     function MaterialsService(http) {
         this.http = http;
+        this.createMaterialUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/add";
         this.materialsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/all"; // url to get all materials
         this.materialsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/filters";
     }
@@ -30,6 +31,9 @@ var MaterialsService = (function () {
     MaterialsService.prototype.getUrlForFetchWithParams = function (filter) {
         var params = filter.getAsGetParams();
         return params == "" ? this.materialsUrl : this.materialsUrlWithParams + "?" + params;
+    };
+    MaterialsService.prototype.createMaterial = function (material) {
+        return this.http.post(this.createMaterialUrl, material);
     };
     MaterialsService = __decorate([
         core_1.Injectable(), 

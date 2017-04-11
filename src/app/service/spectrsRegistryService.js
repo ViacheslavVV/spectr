@@ -16,6 +16,7 @@ require('rxjs/add/operator/map');
 var SpectrsService = (function () {
     function SpectrsService(http) {
         this.http = http;
+        this.createSpectrUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectrs/add";
         this.spectrsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectra/all"; // url to get all spectrs
         this.spectrsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectra/filters"; // url to get all with filters
     }
@@ -30,6 +31,9 @@ var SpectrsService = (function () {
     SpectrsService.prototype.getUrlForFetchWithParams = function (filter) {
         var params = filter.getAsGetParams();
         return params == "" ? this.spectrsUrl : this.spectrsUrlWithParams + "?" + params;
+    };
+    SpectrsService.prototype.createSpectr = function (spectr) {
+        return this.http.post(this.createSpectrUrl, spectr);
     };
     SpectrsService = __decorate([
         core_1.Injectable(), 

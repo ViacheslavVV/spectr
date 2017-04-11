@@ -8,7 +8,7 @@ import { DropdownProviderService } from '../service/dropdownProviderService';
 
 @Component({
   selector: '<build-material>',
-  templateUrl: '../../pages/buildMaterialCard.html',
+  templateUrl: '../../pages/card/buildMaterialCard.html',
   providers: [ BuildMaterialsService ]
 })
 export class BuildMaterialCardComponent {

@@ -19,7 +19,10 @@ var DropdownProviderService = (function () {
         this.materialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/idname";
         this.manufacturersDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
         this.researchObjectTypesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/rotype/idname";
-        this.qualityStandartssUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/qstandarts/idname";
+        this.qualityStandartsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/qstandarts/idname";
+        this.researchPassportsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/respassports/idname";
+        this.chemicalElementsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/chemelements/idname";
+        this.spectrLinesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectrlines/idname";
     }
     DropdownProviderService.prototype.getMaterials = function () {
         return this.httpClient.get(this.materialsDropdownUrl).map(this.extractData);
@@ -31,7 +34,16 @@ var DropdownProviderService = (function () {
         return this.httpClient.get(this.researchObjectTypesUrl).map(this.extractData);
     };
     DropdownProviderService.prototype.getQualityStandarts = function () {
-        return this.httpClient.get(this.qualityStandartssUrl).map(this.extractData);
+        return this.httpClient.get(this.qualityStandartsUrl).map(this.extractData);
+    };
+    DropdownProviderService.prototype.getResearchPassports = function () {
+        return this.httpClient.get(this.researchPassportsUrl).map(this.extractData);
+    };
+    DropdownProviderService.prototype.getChemicalElements = function () {
+        return this.httpClient.get(this.chemicalElementsUrl).map(this.extractData);
+    };
+    DropdownProviderService.prototype.getSpectrLines = function () {
+        return this.httpClient.get(this.spectrLinesUrl).map(this.extractData);
     };
     DropdownProviderService.prototype.extractData = function (res) {
         var body = res.json();
