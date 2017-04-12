@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 export class DropdownProviderService {
 
 	private materialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/materials/idname";
+  private buildMaterialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/bmaterials/idname";
 	private manufacturersDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
   private researchObjectTypesUrl = GlobalSettings.SERVER_ADDRESS+"/rotype/idname"; 
   private qualityStandartsUrl = GlobalSettings.SERVER_ADDRESS+"/qstandarts/idname"; 
@@ -26,6 +27,10 @@ export class DropdownProviderService {
 
   getMaterials() : Observable<DropdownItem[]> {
     return this.httpClient.get(this.materialsDropdownUrl).map(this.extractData);
+  }
+
+  getBuildMaterials() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.buildMaterialsDropdownUrl).map(this.extractData);
   }
 
   getManufacturers() : Observable<DropdownItem[]> {

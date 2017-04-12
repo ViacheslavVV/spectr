@@ -25,6 +25,7 @@ var researchObjectsRegistryComponent_1 = require('./registry/researchObjectsRegi
 var materialsRegistryComponent_1 = require('./registry/materialsRegistryComponent');
 var materialCard_1 = require('./card/materialCard');
 var etalonSpectrsRegistryComponent_1 = require('./registry/etalonSpectrsRegistryComponent');
+var etalonSpectrCard_1 = require('./card/etalonSpectrCard');
 var multiselectComponent_1 = require('./component/multiselectComponent');
 var loginComponent_1 = require('./component/loginComponent');
 var ng2_file_upload_1 = require('ng2-file-upload');
@@ -46,6 +47,7 @@ var components = [
     materialCard_1.MaterialCardComponent,
     researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent,
     etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent,
+    etalonSpectrCard_1.EtalonSpectrCardComponent,
     buildMaterialCard_1.BuildMaterialCardComponent,
     multiselectComponent_1.MutliSelectDropdownComponent,
     loginComponent_1.LoginComponent
@@ -60,6 +62,7 @@ var appRoutes = [
     { path: 'materials', component: materialsRegistryComponent_1.MaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'material', component: materialCard_1.MaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs/etalon', component: etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'spectr/etalon', component: etalonSpectrCard_1.EtalonSpectrCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: '', pathMatch: 'full', redirectTo: 'materials/build', },
     { path: '**', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] }
 ];

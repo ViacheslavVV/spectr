@@ -16,6 +16,7 @@ require('rxjs/add/operator/map');
 var EtalonSpectrsService = (function () {
     function EtalonSpectrsService(http) {
         this.http = http;
+        this.createEtalonSpectrUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/etspectrs/add";
         this.etalonSpectrsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/etspectrs/all"; // url to get all etalon spectrs
         this.etalonSpectrsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/etspectrs/filters";
     }
@@ -30,6 +31,9 @@ var EtalonSpectrsService = (function () {
     EtalonSpectrsService.prototype.getUrlForFetchWithParams = function (filter) {
         var params = filter.getAsGetParams();
         return params == "" ? this.etalonSpectrsUrl : this.etalonSpectrsUrlWithParams + "?" + params;
+    };
+    EtalonSpectrsService.prototype.createEtalonSpectr = function (spectr) {
+        return this.http.post(this.createEtalonSpectrUrl, spectr);
     };
     EtalonSpectrsService = __decorate([
         core_1.Injectable(), 

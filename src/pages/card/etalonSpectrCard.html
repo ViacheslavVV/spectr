@@ -1,0 +1,87 @@
+
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
+	<div class="no-tab-hdr">
+        <div wicket:id="buttonsPanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
+                    <span>Сохранить</span>
+                </button>
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="toRegistr()">
+                    <span>Закрыть</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active">
+        <div class="custom-block-theme test-card form-horizontal">
+            <div class="tab-hdr">
+            	<h1 style="color: #fff">Карточка эталонного спектра</h1>
+            </div>
+	
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Длина волны:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="etalonSpectr.waveLength" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">SpectrBase:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="etalonSpectr.spectrBase" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label  class="label control-label col-lg-2">Описание:</label>
+                <div class="col-lg-10">
+                    <textarea style="width:100%;" [(ngModel)]="etalonSpectr.lineDescription" class="inp-w100"></textarea> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Материал:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false"  [items]="materialsData" [selectionModel]="selectedMaterial"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Строительный материал:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false"  [items]="buildMaterialsData" [selectionModel]="selectedBuildMaterial"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Спектральная линия:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false" [items]="spectrLinesData" [selectionModel]="selectedSpectrLine"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Химический элемент:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false"  [items]="chemicalElementsData" [selectionModel]="selectedChemicalElement"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div> </div>
+    </div>

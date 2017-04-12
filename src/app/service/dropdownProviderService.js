@@ -17,6 +17,7 @@ var DropdownProviderService = (function () {
     function DropdownProviderService(httpClient) {
         this.httpClient = httpClient;
         this.materialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/idname";
+        this.buildMaterialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/idname";
         this.manufacturersDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
         this.researchObjectTypesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/rotype/idname";
         this.qualityStandartsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/qstandarts/idname";
@@ -26,6 +27,9 @@ var DropdownProviderService = (function () {
     }
     DropdownProviderService.prototype.getMaterials = function () {
         return this.httpClient.get(this.materialsDropdownUrl).map(this.extractData);
+    };
+    DropdownProviderService.prototype.getBuildMaterials = function () {
+        return this.httpClient.get(this.buildMaterialsDropdownUrl).map(this.extractData);
     };
     DropdownProviderService.prototype.getManufacturers = function () {
         return this.httpClient.get(this.manufacturersDropdownUrl).map(this.extractData);

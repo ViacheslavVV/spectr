@@ -19,6 +19,8 @@ import { MaterialsRegistryComponent } from './registry/materialsRegistryComponen
 import { MaterialCardComponent } from './card/materialCard';
 
 import { EtalonSpectrsRegistryComponent } from './registry/etalonSpectrsRegistryComponent';
+import { EtalonSpectrCardComponent } from './card/etalonSpectrCard';
+
 import { MutliSelectDropdownComponent } from './component/multiselectComponent';
 import { LoginComponent } from './component/loginComponent';
 
@@ -44,6 +46,7 @@ import { DropdownProviderService } from './service/dropdownProviderService';
    MaterialCardComponent,
 	 ResearchObjectsRegistryComponent, 
 	 EtalonSpectrsRegistryComponent,
+   EtalonSpectrCardComponent,
    BuildMaterialCardComponent,
    MutliSelectDropdownComponent,
    LoginComponent
@@ -59,6 +62,7 @@ import { DropdownProviderService } from './service/dropdownProviderService';
    { path: 'materials',      component: MaterialsRegistryComponent, canActivate: [LoggedInGuard] },
    { path: 'material',      component: MaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs/etalon',      component: EtalonSpectrsRegistryComponent, canActivate: [LoggedInGuard]  },
+   { path: 'spectr/etalon',      component: EtalonSpectrCardComponent, canActivate: [LoggedInGuard]  },
    { path: '', pathMatch: 'full', redirectTo: 'materials/build', }, 
    { path: '**', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard]}
  ];
