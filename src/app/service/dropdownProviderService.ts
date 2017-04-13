@@ -16,7 +16,7 @@ export class DropdownProviderService {
 	private materialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/materials/idname";
   private buildMaterialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/bmaterials/idname";
 	private manufacturersDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
-  private researchObjectTypesUrl = GlobalSettings.SERVER_ADDRESS+"/rotype/idname"; 
+  private researchObjectsUrl = GlobalSettings.SERVER_ADDRESS+"/rotype/idname"; 
   private qualityStandartsUrl = GlobalSettings.SERVER_ADDRESS+"/qstandarts/idname"; 
   private researchPassportsUrl = GlobalSettings.SERVER_ADDRESS+"/respassports/idname"
   private chemicalElementsUrl = GlobalSettings.SERVER_ADDRESS+"/chemelements/idname";
@@ -37,8 +37,8 @@ export class DropdownProviderService {
     return this.httpClient.get(this.manufacturersDropdownUrl).map(this.extractData);
   }
 
-  getResearchObjecTypes() : Observable<DropdownItem[]> {
-    return this.httpClient.get(this.researchObjectTypesUrl).map(this.extractData);
+  getResearchObjecs() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.researchObjectsUrl).map(this.extractData);
   }
 
   getQualityStandarts() : Observable<DropdownItem[]> {

@@ -45,7 +45,7 @@ export class BuildMaterialCardComponent {
 		this.dropdownProviderService.getQualityStandarts().subscribe(data => this.qualityStandartsData = data , error => this.qualityStandartsData = new Array<DropdownItem>());
 		this.dropdownProviderService.getMaterials().subscribe(data => this.materialsData =  data, error => this.materialsData = new Array<DropdownItem>());
 		this.dropdownProviderService.getManufacturers().subscribe(data => this.manufacturerData =  data , error => this.manufacturerData = new Array<DropdownItem>());
-		this.dropdownProviderService.getResearchObjecTypes().subscribe(data => this.researchObjectTypeData =  data , error => this.researchObjectTypeData = new Array<DropdownItem>());
+		this.dropdownProviderService.getResearchObjecs().subscribe(data => this.researchObjectTypeData =  data , error => this.researchObjectTypeData = new Array<DropdownItem>());
 	}
 
 	/**
