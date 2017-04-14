@@ -7,7 +7,7 @@ import { DropdownProviderService } from '../service/dropdownProviderService';
 
 
 @Component({
-  selector: '<build-material>',
+  selector: '<spectr>',
   templateUrl: '../../pages/card/spectrCard.html',
   providers: [ SpectrsService ]
 })

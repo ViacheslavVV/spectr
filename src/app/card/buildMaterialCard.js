@@ -45,7 +45,7 @@ var BuildMaterialCardComponent = (function () {
         this.dropdownProviderService.getQualityStandarts().subscribe(function (data) { return _this.qualityStandartsData = data; }, function (error) { return _this.qualityStandartsData = new Array(); });
         this.dropdownProviderService.getMaterials().subscribe(function (data) { return _this.materialsData = data; }, function (error) { return _this.materialsData = new Array(); });
         this.dropdownProviderService.getManufacturers().subscribe(function (data) { return _this.manufacturerData = data; }, function (error) { return _this.manufacturerData = new Array(); });
-        this.dropdownProviderService.getResearchObjecTypes().subscribe(function (data) { return _this.researchObjectTypeData = data; }, function (error) { return _this.researchObjectTypeData = new Array(); });
+        this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.researchObjectTypeData = data; }, function (error) { return _this.researchObjectTypeData = new Array(); });
     }
     /**
      * Установить все id из выпадающий списков в объект

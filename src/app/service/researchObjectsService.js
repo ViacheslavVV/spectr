@@ -18,6 +18,7 @@ var ResearchObjectsService = (function () {
         this.http = http;
         this.researchObjectsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/resobjects/all"; // url to get all research objects
         this.researchObjectsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/resobjects/filters";
+        this.createResearchObjectUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/resobjects/add";
     }
     ResearchObjectsService.prototype.extractData = function (res) {
         var body = res.json();
@@ -30,6 +31,9 @@ var ResearchObjectsService = (function () {
     ResearchObjectsService.prototype.getUrlForFetchWithParams = function (filter) {
         var params = filter.getAsGetParams();
         return params == "" ? this.researchObjectsUrl : this.researchObjectsUrlWithParams + "?" + params;
+    };
+    ResearchObjectsService.prototype.createResearchObject = function (researchObject) {
+        return this.http.post(this.createResearchObjectUrl, researchObject);
     };
     ResearchObjectsService = __decorate([
         core_1.Injectable(), 

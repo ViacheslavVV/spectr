@@ -21,6 +21,7 @@ export class DropdownProviderService {
   private researchPassportsUrl = GlobalSettings.SERVER_ADDRESS+"/respassports/idname"
   private chemicalElementsUrl = GlobalSettings.SERVER_ADDRESS+"/chemelements/idname";
   private spectrLinesUrl = GlobalSettings.SERVER_ADDRESS+"/spectrlines/idname";
+  private organizationsUrl = GlobalSettings.SERVER_ADDRESS + "/organizations/idname";
 
 	constructor ( private httpClient : HttpClient) {
 	}
@@ -55,6 +56,10 @@ export class DropdownProviderService {
 
   getSpectrLines() : Observable<DropdownItem[]> {
     return this.httpClient.get(this.spectrLinesUrl).map(this.extractData);
+  }
+
+  getOrganizations() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.organizationsUrl).map(this.extractData);
   }
 
 	private extractData(res: Response) {

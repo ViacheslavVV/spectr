@@ -4,6 +4,8 @@ import { Headers, RequestOptions } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
 import { Filter } from '../registry/researchObjectsRegistryComponent';
 import { HttpClient } from './httpClient';
+import { ResearchObject } from '../card/researchObjectCard';
+
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -14,6 +16,7 @@ export class ResearchObjectsService {
 
 	private researchObjectsUrl = GlobalSettings.SERVER_ADDRESS + "/resobjects/all";  // url to get all research objects
 	private researchObjectsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/resobjects/filters";
+  private createResearchObjectUrl = GlobalSettings.SERVER_ADDRESS + "/resobjects/add"
 
 	constructor (private http: HttpClient) {
 	}
@@ -31,5 +34,9 @@ export class ResearchObjectsService {
   	private getUrlForFetchWithParams(filter : Filter) : string {
     	let params = filter.getAsGetParams(); 
     return params == "" ? this.researchObjectsUrl : this.researchObjectsUrlWithParams + "?"+params;
+    }
+
+    public createResearchObject(researchObject : ResearchObject) {
+      return this.http.post(this.createResearchObjectUrl, researchObject);
     }
 }

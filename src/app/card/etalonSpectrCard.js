@@ -69,7 +69,7 @@ var EtalonSpectrCardComponent = (function () {
     };
     EtalonSpectrCardComponent = __decorate([
         core_1.Component({
-            selector: '<build-material>',
+            selector: '<etalon-spectr>',
             templateUrl: '../../pages/card/etalonSpectrCard.html',
             providers: [etalonSpectrsService_1.EtalonSpectrsService]
         }), 

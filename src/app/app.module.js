@@ -22,6 +22,7 @@ var buildMaterialCard_1 = require('./card/buildMaterialCard');
 var spectrsRegistryComponent_1 = require('./registry/spectrsRegistryComponent');
 var spectrCard_1 = require('./card/spectrCard');
 var researchObjectsRegistryComponent_1 = require('./registry/researchObjectsRegistryComponent');
+var researchObjectCard_1 = require('./card/researchObjectCard');
 var materialsRegistryComponent_1 = require('./registry/materialsRegistryComponent');
 var materialCard_1 = require('./card/materialCard');
 var etalonSpectrsRegistryComponent_1 = require('./registry/etalonSpectrsRegistryComponent');
@@ -41,14 +42,15 @@ var components = [
     topMenuPanel_1.TopMenuPanelComponent,
     basePageStructure_1.BasePageStructureComponent,
     buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent,
+    buildMaterialCard_1.BuildMaterialCardComponent,
     spectrsRegistryComponent_1.SpectrsRegistryComponent,
     spectrCard_1.SpectrCardComponent,
     materialsRegistryComponent_1.MaterialsRegistryComponent,
     materialCard_1.MaterialCardComponent,
     researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent,
+    researchObjectCard_1.ResearchObjectCardComponent,
     etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent,
     etalonSpectrCard_1.EtalonSpectrCardComponent,
-    buildMaterialCard_1.BuildMaterialCardComponent,
     multiselectComponent_1.MutliSelectDropdownComponent,
     loginComponent_1.LoginComponent
 ];
@@ -59,6 +61,7 @@ var appRoutes = [
     { path: 'spectrs', component: spectrsRegistryComponent_1.SpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectr', component: spectrCard_1.SpectrCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'researchObjects', component: researchObjectsRegistryComponent_1.ResearchObjectsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
+    { path: 'researchObject', component: researchObjectCard_1.ResearchObjectCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'materials', component: materialsRegistryComponent_1.MaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'material', component: materialCard_1.MaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs/etalon', component: etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },

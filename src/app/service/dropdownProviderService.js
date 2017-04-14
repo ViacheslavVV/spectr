@@ -19,11 +19,12 @@ var DropdownProviderService = (function () {
         this.materialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/idname";
         this.buildMaterialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/idname";
         this.manufacturersDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
-        this.researchObjectTypesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/rotype/idname";
+        this.researchObjectsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/rotype/idname";
         this.qualityStandartsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/qstandarts/idname";
         this.researchPassportsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/respassports/idname";
         this.chemicalElementsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/chemelements/idname";
         this.spectrLinesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectrlines/idname";
+        this.organizationsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/organizations/idname";
     }
     DropdownProviderService.prototype.getMaterials = function () {
         return this.httpClient.get(this.materialsDropdownUrl).map(this.extractData);
@@ -34,8 +35,8 @@ var DropdownProviderService = (function () {
     DropdownProviderService.prototype.getManufacturers = function () {
         return this.httpClient.get(this.manufacturersDropdownUrl).map(this.extractData);
     };
-    DropdownProviderService.prototype.getResearchObjecTypes = function () {
-        return this.httpClient.get(this.researchObjectTypesUrl).map(this.extractData);
+    DropdownProviderService.prototype.getResearchObjecs = function () {
+        return this.httpClient.get(this.researchObjectsUrl).map(this.extractData);
     };
     DropdownProviderService.prototype.getQualityStandarts = function () {
         return this.httpClient.get(this.qualityStandartsUrl).map(this.extractData);
@@ -48,6 +49,9 @@ var DropdownProviderService = (function () {
     };
     DropdownProviderService.prototype.getSpectrLines = function () {
         return this.httpClient.get(this.spectrLinesUrl).map(this.extractData);
+    };
+    DropdownProviderService.prototype.getOrganizations = function () {
+        return this.httpClient.get(this.organizationsUrl).map(this.extractData);
     };
     DropdownProviderService.prototype.extractData = function (res) {
         var body = res.json();

@@ -29,7 +29,7 @@ var MaterialCardComponent = (function () {
     };
     MaterialCardComponent = __decorate([
         core_1.Component({
-            selector: '<build-material>',
+            selector: '<material>',
             templateUrl: '../../pages/card/materialCard.html',
             providers: [materialsService_1.MaterialsService]
         }), 

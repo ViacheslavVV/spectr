@@ -62,7 +62,7 @@ var SpectrCardComponent = (function () {
     };
     SpectrCardComponent = __decorate([
         core_1.Component({
-            selector: '<build-material>',
+            selector: '<spectr>',
             templateUrl: '../../pages/card/spectrCard.html',
             providers: [spectrsRegistryService_1.SpectrsService]
         }), 

@@ -7,7 +7,7 @@ import { DropdownProviderService } from '../service/dropdownProviderService';
 
 
 @Component({
-  selector: '<build-material>',
+  selector: '<etalon-spectr>',
   templateUrl: '../../pages/card/etalonSpectrCard.html',
   providers: [ EtalonSpectrsService ]
 })

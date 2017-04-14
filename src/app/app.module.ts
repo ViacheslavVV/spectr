@@ -14,6 +14,7 @@ import { SpectrsRegistryComponent } from './registry/spectrsRegistryComponent';
 import { SpectrCardComponent } from './card/spectrCard';
 
 import { ResearchObjectsRegistryComponent } from './registry/researchObjectsRegistryComponent';
+import { ResearchObjectCardComponent } from './card/researchObjectCard';
 
 import { MaterialsRegistryComponent } from './registry/materialsRegistryComponent';
 import { MaterialCardComponent } from './card/materialCard';
@@ -40,14 +41,15 @@ import { DropdownProviderService } from './service/dropdownProviderService';
 	 TopMenuPanelComponent, 
 	 BasePageStructureComponent,
 	 BuildMaterialsRegistryComponent, 
+   BuildMaterialCardComponent,
 	 SpectrsRegistryComponent,
    SpectrCardComponent, 
 	 MaterialsRegistryComponent, 
    MaterialCardComponent,
 	 ResearchObjectsRegistryComponent, 
+   ResearchObjectCardComponent,
 	 EtalonSpectrsRegistryComponent,
    EtalonSpectrCardComponent,
-   BuildMaterialCardComponent,
    MutliSelectDropdownComponent,
    LoginComponent
  ];
@@ -59,6 +61,7 @@ import { DropdownProviderService } from './service/dropdownProviderService';
    { path: 'spectrs',      component: SpectrsRegistryComponent , canActivate: [LoggedInGuard]},
    { path: 'spectr',      component: SpectrCardComponent , canActivate: [LoggedInGuard]},
    { path: 'researchObjects',      component: ResearchObjectsRegistryComponent, canActivate: [LoggedInGuard] },
+   { path: 'researchObject',      component: ResearchObjectCardComponent, canActivate: [LoggedInGuard] },
    { path: 'materials',      component: MaterialsRegistryComponent, canActivate: [LoggedInGuard] },
    { path: 'material',      component: MaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs/etalon',      component: EtalonSpectrsRegistryComponent, canActivate: [LoggedInGuard]  },

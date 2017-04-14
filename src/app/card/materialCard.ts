@@ -5,7 +5,7 @@ import { MaterialsService } from "../service/materialsService";
 
 
 @Component({
-  selector: '<build-material>',
+  selector: '<material>',
   templateUrl: '../../pages/card/materialCard.html',
   providers: [ MaterialsService ]
 })
@@ -32,7 +32,7 @@ export class MaterialCardComponent {
 
 export class Material {
 	
-	public name : number;
+	public name : string;
 	public probeDate : Date;
 	public probePlace : string;
 	public description : string;
