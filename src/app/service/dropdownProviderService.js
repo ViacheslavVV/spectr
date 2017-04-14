@@ -19,12 +19,12 @@ var DropdownProviderService = (function () {
         this.materialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/materials/idname";
         this.buildMaterialsDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/bmaterials/idname";
         this.manufacturersDropdownUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
-        this.researchObjectsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/rotype/idname";
+        this.researchObjectsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/resobjects/idname";
         this.qualityStandartsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/qstandarts/idname";
-        this.researchPassportsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/respassports/idname";
-        this.chemicalElementsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/chemelements/idname";
-        this.spectrLinesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectrlines/idname";
-        this.organizationsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/organizations/idname";
+        this.researchPassportsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/rpass/idname";
+        this.chemicalElementsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/chemelem/idname";
+        this.spectrLinesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/sline/idname";
+        this.organizationsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/organization/idname";
     }
     DropdownProviderService.prototype.getMaterials = function () {
         return this.httpClient.get(this.materialsDropdownUrl).map(this.extractData);

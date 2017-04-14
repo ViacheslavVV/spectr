@@ -16,12 +16,12 @@ export class DropdownProviderService {
 	private materialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/materials/idname";
   private buildMaterialsDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/bmaterials/idname";
 	private manufacturersDropdownUrl = GlobalSettings.SERVER_ADDRESS + "/manufacturers/idname";
-  private researchObjectsUrl = GlobalSettings.SERVER_ADDRESS+"/rotype/idname"; 
+  private researchObjectsUrl = GlobalSettings.SERVER_ADDRESS+"/resobjects/idname"; 
   private qualityStandartsUrl = GlobalSettings.SERVER_ADDRESS+"/qstandarts/idname"; 
-  private researchPassportsUrl = GlobalSettings.SERVER_ADDRESS+"/respassports/idname"
-  private chemicalElementsUrl = GlobalSettings.SERVER_ADDRESS+"/chemelements/idname";
-  private spectrLinesUrl = GlobalSettings.SERVER_ADDRESS+"/spectrlines/idname";
-  private organizationsUrl = GlobalSettings.SERVER_ADDRESS + "/organizations/idname";
+  private researchPassportsUrl = GlobalSettings.SERVER_ADDRESS+"/rpass/idname"
+  private chemicalElementsUrl = GlobalSettings.SERVER_ADDRESS+"/chemelem/idname";
+  private spectrLinesUrl = GlobalSettings.SERVER_ADDRESS+"/sline/idname";
+  private organizationsUrl = GlobalSettings.SERVER_ADDRESS + "/organization/idname";
 
 	constructor ( private httpClient : HttpClient) {
 	}

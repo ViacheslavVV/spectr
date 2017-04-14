@@ -41,6 +41,12 @@ var ResearchObjectCardComponent = (function () {
     ResearchObjectCardComponent.prototype.onSave = function () {
         var _this = this;
         this.setIdsToObject();
+        if (this.researchObject.dateOrig != null) {
+            this.researchObject.date = this.researchObject.dateOrig.toLocaleDateString();
+        }
+        else {
+            this.researchObject.date = null;
+        }
         this.researchObjectsService.createResearchObject(this.researchObject).subscribe(function (data) { console.log(data); _this.toRegistr(); }, function (error) { return console.log(error); });
     };
     ResearchObjectCardComponent.prototype.toRegistr = function () {

@@ -19,6 +19,11 @@ export class MaterialCardComponent {
 	constructor(private materialsService : MaterialsService, private router : Router) {}
 
 	onSave() : void {
+		if (this.material.probeDateOrig != null) {
+			this.material.probeDate = this.material.probeDateOrig.toLocaleDateString();
+		} else {
+			this.material.probeDate = null;
+		}
 		this.materialsService.createMaterial(this.material).subscribe(
 						data => {console.log(data); this.toRegistr();},
                        error =>  console.log(error));
@@ -33,7 +38,8 @@ export class MaterialCardComponent {
 export class Material {
 	
 	public name : string;
-	public probeDate : Date;
+	public probeDateOrig : Date;
+	public probeDate : string;
 	public probePlace : string;
 	public description : string;
 	public spectrFile : string;

@@ -16,7 +16,7 @@ require('rxjs/add/operator/map');
 var SpectrsService = (function () {
     function SpectrsService(http) {
         this.http = http;
-        this.createSpectrUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectrs/add";
+        this.createSpectrUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectra/add";
         this.spectrsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectra/all"; // url to get all spectrs
         this.spectrsUrlWithParams = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/spectra/filters"; // url to get all with filters
     }

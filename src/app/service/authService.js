@@ -20,8 +20,7 @@ var AuthService = (function () {
         this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login/auth"; // url to get login
     }
     AuthService.prototype.isLoggedIn = function () {
-        return true;
-        //return localStorage.getItem('loggedIn') == 'true';
+        return localStorage.getItem('loggedIn') == 'true';
     };
     AuthService.prototype.login = function (login, password) {
         var headers = new http_1.Headers();

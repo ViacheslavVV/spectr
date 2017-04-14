@@ -41,6 +41,11 @@ export class ResearchObjectCardComponent {
 
 	onSave() : void {
 		this.setIdsToObject();
+		if (this.researchObject.dateOrig != null) {
+			this.researchObject.date = this.researchObject.dateOrig.toLocaleDateString();
+		} else {
+			this.researchObject.date = null;
+		}
 		this.researchObjectsService.createResearchObject(this.researchObject).subscribe(
 						data => {console.log(data); this.toRegistr();},
                        error =>  console.log(error));
@@ -56,5 +61,6 @@ export class ResearchObject {
 	public organization : number;
 	public name : string;
 	public description : string;
-	public date : Date;
+	public dateOrig : Date;
+	public date : string;
 }

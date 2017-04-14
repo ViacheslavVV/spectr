@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SpectrsService {
 
-	private createSpectrUrl = GlobalSettings.SERVER_ADDRESS + "/spectrs/add";
+	private createSpectrUrl = GlobalSettings.SERVER_ADDRESS + "/spectra/add";
 	private spectrsUrl = GlobalSettings.SERVER_ADDRESS + "/spectra/all";  // url to get all spectrs
 	private spectrsUrlWithParams = GlobalSettings.SERVER_ADDRESS + "/spectra/filters"; // url to get all with filters
 

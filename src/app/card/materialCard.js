@@ -22,6 +22,9 @@ var MaterialCardComponent = (function () {
     }
     MaterialCardComponent.prototype.onSave = function () {
         var _this = this;
+        if (this.material.probeDateOrig != null) {
+            this.material.probeDate = this.material.probeDateOrig.toLocaleDateString();
+        }
         this.materialsService.createMaterial(this.material).subscribe(function (data) { console.log(data); _this.toRegistr(); }, function (error) { return console.log(error); });
     };
     MaterialCardComponent.prototype.toRegistr = function () {
