@@ -6,7 +6,7 @@ import { BasePageStructureComponent } from './basePageStructure';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/primeng';
 import { HttpModule, RequestOptions, RequestMethod, Headers} from '@angular/http';
-//registry imports
+//---------------registry and cards imports-----------
 import { BuildMaterialsRegistryComponent } from './registry/buildMaterialsRegistryComponent';
 import { BuildMaterialCardComponent } from './card/buildMaterialCard';
 
@@ -21,10 +21,11 @@ import { MaterialCardComponent } from './card/materialCard';
 
 import { EtalonSpectrsRegistryComponent } from './registry/etalonSpectrsRegistryComponent';
 import { EtalonSpectrCardComponent } from './card/etalonSpectrCard';
-
+//----------------------------------------------------
 import { MutliSelectDropdownComponent } from './component/multiselectComponent';
-import { LoginComponent } from './component/loginComponent';
 
+import { LoginComponent } from './component/loginComponent';
+import { SignUpComponent } from './component/signUpComponent';
 
 
 import { FileUploadModule } from 'ng2-file-upload';
@@ -51,11 +52,13 @@ import { DropdownProviderService } from './service/dropdownProviderService';
 	 EtalonSpectrsRegistryComponent,
    EtalonSpectrCardComponent,
    MutliSelectDropdownComponent,
-   LoginComponent
+   LoginComponent,
+   SignUpComponent
  ];
 
  const appRoutes: Routes = [
    { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
+   { path: 'signUp', component: SignUpComponent, canActivate: [LoggedOutGuard] },
    { path: 'materials/build', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard] },
    { path: 'material/build', component: BuildMaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs',      component: SpectrsRegistryComponent , canActivate: [LoggedInGuard]},

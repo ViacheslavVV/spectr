@@ -16,7 +16,7 @@ var basePageStructure_1 = require('./basePageStructure');
 var forms_1 = require('@angular/forms');
 var primeng_1 = require('primeng/primeng');
 var http_1 = require('@angular/http');
-//registry imports
+//---------------registry and cards imports-----------
 var buildMaterialsRegistryComponent_1 = require('./registry/buildMaterialsRegistryComponent');
 var buildMaterialCard_1 = require('./card/buildMaterialCard');
 var spectrsRegistryComponent_1 = require('./registry/spectrsRegistryComponent');
@@ -27,8 +27,10 @@ var materialsRegistryComponent_1 = require('./registry/materialsRegistryComponen
 var materialCard_1 = require('./card/materialCard');
 var etalonSpectrsRegistryComponent_1 = require('./registry/etalonSpectrsRegistryComponent');
 var etalonSpectrCard_1 = require('./card/etalonSpectrCard');
+//----------------------------------------------------
 var multiselectComponent_1 = require('./component/multiselectComponent');
 var loginComponent_1 = require('./component/loginComponent');
+var signUpComponent_1 = require('./component/signUpComponent');
 var ng2_file_upload_1 = require('ng2-file-upload');
 var ng2_toasty_1 = require('ng2-toasty');
 var ngx_modal_1 = require("ngx-modal");
@@ -52,10 +54,12 @@ var components = [
     etalonSpectrsRegistryComponent_1.EtalonSpectrsRegistryComponent,
     etalonSpectrCard_1.EtalonSpectrCardComponent,
     multiselectComponent_1.MutliSelectDropdownComponent,
-    loginComponent_1.LoginComponent
+    loginComponent_1.LoginComponent,
+    signUpComponent_1.SignUpComponent
 ];
 var appRoutes = [
     { path: 'login', component: loginComponent_1.LoginComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
+    { path: 'signUp', component: signUpComponent_1.SignUpComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
     { path: 'materials/build', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'material/build', component: buildMaterialCard_1.BuildMaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs', component: spectrsRegistryComponent_1.SpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },

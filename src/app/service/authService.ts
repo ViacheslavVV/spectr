@@ -5,7 +5,7 @@ import { GlobalSettings } from '../service/globalSettings';
 import { Filter } from '../registry/buildMaterialsRegistryComponent';
 import { BuildMaterial } from '../card/buildMaterialCard';
 import { HttpClient } from '../service/httpClient';
-
+import { UserSignUpData } from '../component/signUpComponent';
 
 
 import { Observable } from 'rxjs/Observable';
@@ -16,6 +16,9 @@ import 'rxjs/add/operator/map';
 export class AuthService {
 
 	private authUrl : string = GlobalSettings.SERVER_ADDRESS+"/login/auth";  // url to get login
+  private loginCheckUrl : string = GlobalSettings.SERVER_ADDRESS+"/login/check";
+  private signUpUrl : string = GlobalSettings.SERVER_ADDRESS+"/signUp"; 
+  
 	constructor (private http: HttpClient) {
 	}
 
@@ -48,5 +51,13 @@ export class AuthService {
   public logout() {
     localStorage.setItem('loggedIn', 'false');
     localStorage.removeItem('auth_token');
+  }
+
+  public checkLogin(login : string) : Observable<boolean> {
+    return this.http.post(this.loginCheckUrl, login).map(res => res.json());
+  }
+
+  public signUp(userSignUpData : UserSignUpData) : Observable<boolean> {
+    return this.http.post(this.signUpUrl, userSignUpData).map(res => res.json());
   }
 }

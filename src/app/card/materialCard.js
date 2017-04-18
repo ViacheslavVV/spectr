@@ -25,6 +25,9 @@ var MaterialCardComponent = (function () {
         if (this.material.probeDateOrig != null) {
             this.material.probeDate = this.material.probeDateOrig.toLocaleDateString();
         }
+        else {
+            this.material.probeDate = null;
+        }
         this.materialsService.createMaterial(this.material).subscribe(function (data) { console.log(data); _this.toRegistr(); }, function (error) { return console.log(error); });
     };
     MaterialCardComponent.prototype.toRegistr = function () {

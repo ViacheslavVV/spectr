@@ -556,3 +556,23 @@ a:active {
         border: none;
     }
 }
+
+.blockMySignUp{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    color: white;
+    
+    div {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border: none;
+    }
+}
