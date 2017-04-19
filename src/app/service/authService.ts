@@ -15,10 +15,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-	private authUrl : string = GlobalSettings.SERVER_ADDRESS+"/login/auth";  // url to get login
-  private loginCheckUrl : string = GlobalSettings.SERVER_ADDRESS+"/login/check";
-  private signUpUrl : string = GlobalSettings.SERVER_ADDRESS+"/signUp"; 
-  
+	private authUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/login";  // url to get login
+  private loginCheckUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/check";
+  private signUpUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/reg"; 
+  private logoutUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/logout";
+  private restorePasswordUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/restore";
 	constructor (private http: HttpClient) {
 	}
 
@@ -50,6 +51,7 @@ export class AuthService {
 
   public logout() {
     localStorage.setItem('loggedIn', 'false');
+    this.http.post(this.logoutUrl, {}).subscribe(data => console.log('loggedOut'));
     localStorage.removeItem('auth_token');
   }
 
@@ -59,5 +61,9 @@ export class AuthService {
 
   public signUp(userSignUpData : UserSignUpData) : Observable<boolean> {
     return this.http.post(this.signUpUrl, userSignUpData).map(res => res.json());
+  }
+
+  public restorePassword(login : string) {
+    this.http.post(this.restorePasswordUrl, login).subscribe();
   }
 }

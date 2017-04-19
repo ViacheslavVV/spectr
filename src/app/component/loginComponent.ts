@@ -15,10 +15,11 @@ export class LoginComponent {
   private incorrectDataMsg : string = 'Некорректные логин или пароль!';
   private serverErrorMsg : string = 'Ошибка сервера!';
   private errText : string;
+  private forgottenPassword : string;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-
     console.log(localStorage);
     this.authService.login(this.loginName, this.password).subscribe(data => data ? this.loginOk() : this.loginFail(), error => this.loginAppFail());    
   }
@@ -39,5 +40,17 @@ export class LoginComponent {
 
   isError() : boolean {
     return this._errPresent;
+  }
+
+  toRegPage() {
+    this.router.navigate(['signUp']);
+  }
+
+  restorePassword() : void {
+    if (this.forgottenPassword != null && this.forgottenPassword != '') {
+        this.authService.restorePassword(this.forgottenPassword);
+        this.forgottenPassword = '';
+      }
+    }
   }
 }

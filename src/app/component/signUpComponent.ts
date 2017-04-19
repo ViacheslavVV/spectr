@@ -50,6 +50,10 @@ export class SignUpComponent {
   isError() : boolean {
     return this._errPresent;
   }
+
+  toLoginPage() {
+    this.router.navigate(['login']);
+  }
 }
 
 export class UserSignUpData {

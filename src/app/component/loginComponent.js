@@ -38,6 +38,15 @@ var LoginComponent = (function () {
     LoginComponent.prototype.isError = function () {
         return this._errPresent;
     };
+    LoginComponent.prototype.toRegPage = function () {
+        this.router.navigate(['signUp']);
+    };
+    LoginComponent.prototype.restorePassword = function () {
+        if (this.forgottenPassword != null && this.forgottenPassword != '') {
+            this.authService.restorePassword(this.forgottenPassword);
+            this.forgottenPassword = '';
+        }
+    };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',

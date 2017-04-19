@@ -48,6 +48,9 @@ var SignUpComponent = (function () {
     SignUpComponent.prototype.isError = function () {
         return this._errPresent;
     };
+    SignUpComponent.prototype.toLoginPage = function () {
+        this.router.navigate(['login']);
+    };
     SignUpComponent = __decorate([
         core_1.Component({
             selector: 'sign-up',

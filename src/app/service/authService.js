@@ -17,9 +17,11 @@ require('rxjs/add/operator/map');
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login/auth"; // url to get login
-        this.loginCheckUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/login/check";
-        this.signUpUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/signUp";
+        this.authUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/login"; // url to get login
+        this.loginCheckUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/check";
+        this.signUpUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/reg";
+        this.logoutUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/logout";
+        this.restorePasswordUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/restore";
     }
     AuthService.prototype.isLoggedIn = function () {
         return localStorage.getItem('loggedIn') == 'true';
@@ -42,6 +44,7 @@ var AuthService = (function () {
     };
     AuthService.prototype.logout = function () {
         localStorage.setItem('loggedIn', 'false');
+        this.http.post(this.logoutUrl, {}).subscribe(function (data) { return console.log('loggedOut'); });
         localStorage.removeItem('auth_token');
     };
     AuthService.prototype.checkLogin = function (login) {
@@ -49,6 +52,9 @@ var AuthService = (function () {
     };
     AuthService.prototype.signUp = function (userSignUpData) {
         return this.http.post(this.signUpUrl, userSignUpData).map(function (res) { return res.json(); });
+    };
+    AuthService.prototype.restorePassword = function (login) {
+        this.http.post(this.restorePasswordUrl, login).subscribe();
     };
     AuthService = __decorate([
         core_1.Injectable(), 
