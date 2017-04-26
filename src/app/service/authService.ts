@@ -19,7 +19,7 @@ export class AuthService {
   private loginCheckUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/check";
   private signUpUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/reg"; 
   private logoutUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/logout";
-  private restorePasswordUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/restore";
+  private restorePasswordUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/passrec";
 	constructor (private http: HttpClient) {
 	}
 
@@ -64,6 +64,8 @@ export class AuthService {
   }
 
   public restorePassword(login : string) {
-    this.http.post(this.restorePasswordUrl, login).subscribe();
+    let headers = new Headers();
+    headers.append('login', login);
+    this.http.post(this.restorePasswordUrl, {}, headers).subscribe();
   }
 }

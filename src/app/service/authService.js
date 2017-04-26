@@ -21,7 +21,7 @@ var AuthService = (function () {
         this.loginCheckUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/check";
         this.signUpUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/reg";
         this.logoutUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/logout";
-        this.restorePasswordUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/restore";
+        this.restorePasswordUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/passrec";
     }
     AuthService.prototype.isLoggedIn = function () {
         return localStorage.getItem('loggedIn') == 'true';
@@ -54,7 +54,9 @@ var AuthService = (function () {
         return this.http.post(this.signUpUrl, userSignUpData).map(function (res) { return res.json(); });
     };
     AuthService.prototype.restorePassword = function (login) {
-        this.http.post(this.restorePasswordUrl, login).subscribe();
+        var headers = new http_1.Headers();
+        headers.append('login', login);
+        this.http.post(this.restorePasswordUrl, {}, headers).subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
     };
     AuthService = __decorate([
         core_1.Injectable(), 
