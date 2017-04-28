@@ -23,6 +23,7 @@ import { EtalonSpectrsRegistryComponent } from './registry/etalonSpectrsRegistry
 import { EtalonSpectrCardComponent } from './card/etalonSpectrCard';
 //----------------------------------------------------
 import { MutliSelectDropdownComponent } from './component/multiselectComponent';
+import { CreationComponent } from './card/creationCard';
 
 import { LoginComponent } from './component/loginComponent';
 import { SignUpComponent } from './component/signUpComponent';
@@ -53,12 +54,14 @@ import { DropdownProviderService } from './service/dropdownProviderService';
    EtalonSpectrCardComponent,
    MutliSelectDropdownComponent,
    LoginComponent,
-   SignUpComponent
+   SignUpComponent,
+   CreationComponent
  ];
 
  const appRoutes: Routes = [
    { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
    { path: 'signUp', component: SignUpComponent, canActivate: [LoggedOutGuard] },
+   { path: 'creation', component: CreationComponent, canActivate: [LoggedInGuard] },
    { path: 'materials/build', component: BuildMaterialsRegistryComponent, canActivate: [LoggedInGuard] },
    { path: 'material/build', component: BuildMaterialCardComponent, canActivate: [LoggedInGuard] },
    { path: 'spectrs',      component: SpectrsRegistryComponent , canActivate: [LoggedInGuard]},

@@ -29,6 +29,7 @@ var etalonSpectrsRegistryComponent_1 = require('./registry/etalonSpectrsRegistry
 var etalonSpectrCard_1 = require('./card/etalonSpectrCard');
 //----------------------------------------------------
 var multiselectComponent_1 = require('./component/multiselectComponent');
+var creationCard_1 = require('./card/creationCard');
 var loginComponent_1 = require('./component/loginComponent');
 var signUpComponent_1 = require('./component/signUpComponent');
 var ng2_file_upload_1 = require('ng2-file-upload');
@@ -55,11 +56,13 @@ var components = [
     etalonSpectrCard_1.EtalonSpectrCardComponent,
     multiselectComponent_1.MutliSelectDropdownComponent,
     loginComponent_1.LoginComponent,
-    signUpComponent_1.SignUpComponent
+    signUpComponent_1.SignUpComponent,
+    creationCard_1.CreationComponent
 ];
 var appRoutes = [
     { path: 'login', component: loginComponent_1.LoginComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
     { path: 'signUp', component: signUpComponent_1.SignUpComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
+    { path: 'creation', component: creationCard_1.CreationComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'materials/build', component: buildMaterialsRegistryComponent_1.BuildMaterialsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'material/build', component: buildMaterialCard_1.BuildMaterialCardComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'spectrs', component: spectrsRegistryComponent_1.SpectrsRegistryComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },

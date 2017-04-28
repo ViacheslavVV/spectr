@@ -1,0 +1,161 @@
+
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
+<!-- <multi-select-dropdown (selectionModelChange)="onUpdate($event)"  [items]="dropItems" [selectionModel]="selected"></multi-select-dropdown> -->
+	<!-- <div class="no-tab-hdr">
+        <div wicket:id="buttonsPanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
+                    <span>Сохранить</span>
+                </button>
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="toRegistr()">
+                    <span>Закрыть</span>
+                </button>
+            </div>
+        </div>
+    </div> -->
+    <div role="tabpanel" class="tab-pane active">
+        <div class="custom-block-theme test-card form-horizontal">
+            <div class="tab-hdr">
+            	<h1 style="color: #fff">Страница добавления данных</h1>
+            </div>
+	<div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#qualityStandartModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить стандарт качества</button></a>
+    </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#researchObjectTypeModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить тип исследуемого объекта</button></a>
+    </div>
+    <!-- <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Название:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.mark" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+       <div class="col-sm-6">
+            <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="createQualityStandart()">
+                    <span>Добавить тип объекта исследования качества</span>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Год производства:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.madeYear" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">SpectrFile:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="buildMaterial.spectrFile" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Стандарты качества:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [items]="qualityStandartsData" [selectionModel]="selectedStandarts"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Объект исследования:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false"  [items]="researchObjectTypeData" [selectionModel]="selectedResearchObject"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Материалы:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [items]="materialsData" [selectionModel]="selectedMaterials"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Производитель:</label>
+                <div class="col-lg-6">
+                    <multi-select-dropdown [allowMultiselect]="false" [items]="manufacturerData" [selectionModel]="selectedManufacturer"></multi-select-dropdown>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- quality standart modal -->
+        <div id="qualityStandartModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить стандарт качества</h1>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label  class="label control-label col-lg-6 label-modal">Название:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="qualityStandart.name" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createQualityStandart()">
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- research object type modal -->
+        <div id="researchObjectTypeModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить тип объекта исследования</h1>
+              </div>
+              <div class="modal-body row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-6 label-modal">Название:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="researchObjectType.name" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createResearchObjectType()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+</div> </div>
+    </div>

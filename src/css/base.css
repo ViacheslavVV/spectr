@@ -1,4 +1,4 @@
-.top-menu-color {
+﻿.top-menu-color {
 	
     background-image: linear-gradient(to bottom, #346281 0%, #004763 100%);
 }
@@ -575,4 +575,8 @@ a:active {
         margin: 0 auto;
         border: none;
     }
+}
+
+.label-modal {
+    color: #333;
 }

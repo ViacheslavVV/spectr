@@ -56,7 +56,7 @@ var AuthService = (function () {
     AuthService.prototype.restorePassword = function (login) {
         var headers = new http_1.Headers();
         headers.append('login', login);
-        this.http.post(this.restorePasswordUrl, {}, headers).subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
+        this.http.post(this.restorePasswordUrl, {}, headers).subscribe();
     };
     AuthService = __decorate([
         core_1.Injectable(), 
