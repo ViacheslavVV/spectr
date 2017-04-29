@@ -580,3 +580,7 @@ a:active {
 .label-modal {
     color: #333;
 }
+
+.modal-content {
+    background-color: gainsboro;
+}

@@ -25,75 +25,29 @@
     <div class="row" style="width: 100%; padding-bottom: 1%;">
              <a href="#" data-target="#researchObjectTypeModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить тип исследуемого объекта</button></a>
     </div>
-    <!-- <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">Название:</label>
-                <div class="col-lg-6">
-                    <input [(ngModel)]="buildMaterial.mark" class="inp-w100" type="text"/>
-                </div>
-            </div>
-        </div>
-       <div class="col-sm-6">
-            <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="createQualityStandart()">
-                    <span>Добавить тип объекта исследования качества</span>
-            </button>
-        </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#manufacturerModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить производителя</button></a>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">Год производства:</label>
-                <div class="col-lg-6">
-                    <input [(ngModel)]="buildMaterial.madeYear" class="inp-w100" type="text"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">SpectrFile:</label>
-                <div class="col-lg-6">
-                    <input [(ngModel)]="buildMaterial.spectrFile" class="inp-w100" type="text"/>
-                </div>
-            </div>
-        </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#organizationModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить организацию</button></a>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">Стандарты качества:</label>
-                <div class="col-lg-6">
-                    <multi-select-dropdown [items]="qualityStandartsData" [selectionModel]="selectedStandarts"></multi-select-dropdown>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">Объект исследования:</label>
-                <div class="col-lg-6">
-                    <multi-select-dropdown [allowMultiselect]="false"  [items]="researchObjectTypeData" [selectionModel]="selectedResearchObject"></multi-select-dropdown>
-                </div>
-            </div>
-        </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#attachmentModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить приложение</button></a>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">Материалы:</label>
-                <div class="col-lg-6">
-                    <multi-select-dropdown [items]="materialsData" [selectionModel]="selectedMaterials"></multi-select-dropdown>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label  class="label control-label col-lg-6">Производитель:</label>
-                <div class="col-lg-6">
-                    <multi-select-dropdown [allowMultiselect]="false" [items]="manufacturerData" [selectionModel]="selectedManufacturer"></multi-select-dropdown>
-                </div>
-            </div>
-        </div>
-    </div> -->
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#researchPassportModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить паспорт исследования</button></a>
+    </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+             <a href="#" data-target="#researchMethodModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить метод исследования</button></a>
+    </div>
+    
+    
+
 
     <!-- quality standart modal -->
         <div id="qualityStandartModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -105,9 +59,9 @@
               </div>
               <div class="modal-body">
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group">
-                            <label  class="label control-label col-lg-6 label-modal">Название:</label>
+                            <label  class="control-label col-lg-6 label-modal">Название:</label>
                             <div class="col-lg-6">
                                 <input [(ngModel)]="qualityStandart.name" class="inp-w100" type="text"/>
                             </div>
@@ -120,7 +74,7 @@
               </div>
               <div class="modal-footer">
                   <div class="col-md-12">
-                  <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
                   </div>    
               </div>
           </div>
@@ -136,7 +90,7 @@
                   <h1 class="text-center" style="color: black;">Добавить тип объекта исследования</h1>
               </div>
               <div class="modal-body row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <label  class="control-label col-lg-6 label-modal">Название:</label>
                             <div class="col-lg-6">
@@ -150,7 +104,245 @@
               </div>
               <div class="modal-footer">
                   <div class="col-md-12">
-                  <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Manufacturer modal -->
+        <div id="manufacturerModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить производителя</h1>
+              </div>
+              <div class="modal-body row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-6 label-modal">Название:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="manufacturer.name" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-6 label-modal">Год:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="manufacturer.year" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-2 label-modal">Описание:</label>
+                            <div class="col-lg-10">
+                                <textarea style="width:100%;" [(ngModel)]="manufacturer.description" class="inp-w100"></textarea> 
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createManufacturer()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Organization modal -->
+        <div id="organizationModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить организацию</h1>
+              </div>
+              <div class="modal-body row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-6 label-modal">Полное название:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="organization.fullTitle" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-6 label-modal">Короткое название:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="organization.shortTitle" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createOrganization()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Attachment modal -->
+        <div id="attachmentModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить приложение</h1>
+              </div>
+              <div class="modal-body row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Название:</label>
+                            <div class="col-lg-7">
+                                <input [(ngModel)]="attachment.name" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-2 label-modal">Описание:</label>
+                            <div class="col-lg-10">
+                                <textarea style="width:100%;" [(ngModel)]="attachment.description" class="inp-w100"></textarea> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Объект исследования:</label>
+                            <div class="col-lg-7">
+                                <multi-select-dropdown [allowMultiselect]="false"  [items]="attachmentResearchObjectsData" [selectionModel]="attachmentResearchObject"></multi-select-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Файл:</label>
+                            <div class="col-lg-7">
+                                <multi-select-dropdown [allowMultiselect]="false"  [items]="attachmentFilesData" [selectionModel]="attachmentFile"></multi-select-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createAttachment()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Research passport modal -->
+        <div id="researchPassportModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить паспорт исследования</h1>
+              </div>
+              <div class="modal-body row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Интенсивность:</label>
+                            <div class="col-lg-7">
+                                <input [(ngModel)]="researchPassport.intensity" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-2 label-modal">Описание:</label>
+                            <div class="col-lg-10">
+                                <textarea style="width:100%;" [(ngModel)]="researchPassport.description" class="inp-w100"></textarea> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Объект исследования:</label>
+                            <div class="col-lg-7">
+                                <multi-select-dropdown [allowMultiselect]="false"  [items]="resPassResObjectsData" [selectionModel]="resPassResObject"></multi-select-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Метод исследования:</label>
+                            <div class="col-lg-7">
+                                <multi-select-dropdown [allowMultiselect]="false"  [items]="resPassResMethodsData" [selectionModel]="resPassResMethod"></multi-select-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-5 label-modal">Файл:</label>
+                            <div class="col-lg-7">
+                                <multi-select-dropdown [allowMultiselect]="false"  [items]="resPassFilesData" [selectionModel]="resPassFile"></multi-select-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createResearchPassport()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Research method modal -->
+        <div id="researchMethodModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Добавить метод исследования</h1>
+              </div>
+              <div class="modal-body row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-6 label-modal">Название:</label>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="researchMethod.name" class="inp-w100" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label  class="control-label col-lg-2 label-modal">Описание:</label>
+                            <div class="col-lg-10">
+                                <textarea style="width:100%;" [(ngModel)]="researchMethod.description" class="inp-w100"></textarea> 
+                            </div>
+                        </div>
+                    </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createResearchMethod()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
                   </div>    
               </div>
           </div>
