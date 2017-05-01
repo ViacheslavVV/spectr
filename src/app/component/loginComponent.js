@@ -58,4 +58,10 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 exports.LoginComponent = LoginComponent;
+var AppUserInfo = (function () {
+    function AppUserInfo() {
+    }
+    return AppUserInfo;
+}());
+exports.AppUserInfo = AppUserInfo;
 //# sourceMappingURL=loginComponent.js.map

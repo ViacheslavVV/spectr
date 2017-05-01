@@ -7,6 +7,19 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class TopMenuPanelComponent  {
+
+	public getUserLogin() : string {
+		return localStorage.getItem('login');
+	}
+
+	public getUserFio() : string {
+		return localStorage.getItem('fio');
+	}
+
+	public getEmail() : string {
+		return localStorage.getItem('email');
+	}
+
 	constructor(private authService : AuthService, private router : Router) {
 	}
 

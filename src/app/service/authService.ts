@@ -6,7 +6,7 @@ import { Filter } from '../registry/buildMaterialsRegistryComponent';
 import { BuildMaterial } from '../card/buildMaterialCard';
 import { HttpClient } from '../service/httpClient';
 import { UserSignUpData } from '../component/signUpComponent';
-
+import { AppUserInfo } from '../component/loginComponent';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -20,6 +20,8 @@ export class AuthService {
   private signUpUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/reg"; 
   private logoutUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/logout";
   private restorePasswordUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/passrec";
+  private userGetUrl : string = GlobalSettings.SERVER_ADDRESS + "/userGetUrl";
+  private userUpdateUrl : string = GlobalSettings.SERVER_ADDRESS + "/userUpdateUrl";
 	constructor (private http: HttpClient) {
 	}
 
@@ -42,6 +44,13 @@ export class AuthService {
         if (res.success == true || res.success == 'true') {
           localStorage.setItem('auth_token', res.authToken);
           localStorage.setItem('loggedIn', 'true');
+          this.getUserByLogin(login).subscribe(data => {
+             let user = data.json();
+             localStorage.setItem('login', login);
+             localStorage.setItem('fio', user.firstName + ' ' + user.lastName);
+             localStorage.setItem('email', user.email);
+          });
+
           return true;
         }
 
@@ -67,5 +76,15 @@ export class AuthService {
     let headers = new Headers();
     headers.append('login', login);
     this.http.post(this.restorePasswordUrl, {}, headers).subscribe();
+  }
+
+  public getUserByLogin(login : string) : Observable<Response> {
+    let headers = new Headers();
+    headers.append('login', login);
+    return this.http.post(this.userGetUrl, {}, headers);
+  }
+
+  public updateUser(user : AppUserInfo) : Observable<boolean> {
+    return this.http.post(this.userUpdateUrl, user).map(res => res.json());
   }
 }

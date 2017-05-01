@@ -16,6 +16,15 @@ var TopMenuPanelComponent = (function () {
         this.authService = authService;
         this.router = router;
     }
+    TopMenuPanelComponent.prototype.getUserLogin = function () {
+        return localStorage.getItem('login');
+    };
+    TopMenuPanelComponent.prototype.getUserFio = function () {
+        return localStorage.getItem('fio');
+    };
+    TopMenuPanelComponent.prototype.getEmail = function () {
+        return localStorage.getItem('email');
+    };
     TopMenuPanelComponent.prototype.isLoggedIn = function () {
         return this.authService.isLoggedIn();
     };

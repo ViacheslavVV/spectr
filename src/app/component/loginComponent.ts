@@ -53,3 +53,10 @@ export class LoginComponent {
       }
     }
   }
+
+export class AppUserInfo {
+  public login : string;
+  public email : string;
+  public firstName : string;
+  public lastName : string;
+}

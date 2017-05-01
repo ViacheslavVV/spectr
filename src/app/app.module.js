@@ -32,6 +32,7 @@ var multiselectComponent_1 = require('./component/multiselectComponent');
 var creationCard_1 = require('./card/creationCard');
 var loginComponent_1 = require('./component/loginComponent');
 var signUpComponent_1 = require('./component/signUpComponent');
+var userEditionCard_1 = require('./card/userEditionCard');
 var ng2_file_upload_1 = require('ng2-file-upload');
 var ng2_toasty_1 = require('ng2-toasty');
 var ngx_modal_1 = require("ngx-modal");
@@ -57,9 +58,11 @@ var components = [
     multiselectComponent_1.MutliSelectDropdownComponent,
     loginComponent_1.LoginComponent,
     signUpComponent_1.SignUpComponent,
-    creationCard_1.CreationComponent
+    creationCard_1.CreationComponent,
+    userEditionCard_1.UserEditionCard
 ];
 var appRoutes = [
+    { path: 'user/edit', component: userEditionCard_1.UserEditionCard, canActivate: [loggedInGuard_1.LoggedInGuard] },
     { path: 'login', component: loginComponent_1.LoginComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
     { path: 'signUp', component: signUpComponent_1.SignUpComponent, canActivate: [loggedOutGuard_1.LoggedOutGuard] },
     { path: 'creation', component: creationCard_1.CreationComponent, canActivate: [loggedInGuard_1.LoggedInGuard] },

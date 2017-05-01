@@ -1,0 +1,58 @@
+
+<div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
+<!-- <multi-select-dropdown (selectionModelChange)="onUpdate($event)"  [items]="dropItems" [selectionModel]="selected"></multi-select-dropdown> -->
+	<div class="no-tab-hdr">
+        <div wicket:id="buttonsPanel">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
+                    <span>Сохранить</span>
+                </button>
+                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onClose()">
+                    <span>Закрыть</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane active">
+        <div class="custom-block-theme test-card form-horizontal">
+            <div class="tab-hdr">
+            	<h1 style="color: #fff">Данные пользователя</h1>
+            </div>
+	<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Логин:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="user.login" class="inp-w100" type="text" [disabled]="true"/>
+                </div>
+            </div>
+        </div>
+       <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">E-mail:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="user.email" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Имя:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="user.firstName" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Фамилия:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="user.lastName" class="inp-w100" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> </div>
+    </div>

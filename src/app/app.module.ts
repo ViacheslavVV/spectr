@@ -28,6 +28,8 @@ import { CreationComponent } from './card/creationCard';
 import { LoginComponent } from './component/loginComponent';
 import { SignUpComponent } from './component/signUpComponent';
 
+import { UserEditionCard } from './card/userEditionCard';
+
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ToastyModule } from 'ng2-toasty';
@@ -55,10 +57,12 @@ import { DropdownProviderService } from './service/dropdownProviderService';
    MutliSelectDropdownComponent,
    LoginComponent,
    SignUpComponent,
-   CreationComponent
+   CreationComponent,
+   UserEditionCard
  ];
 
  const appRoutes: Routes = [
+   { path: 'user/edit', component: UserEditionCard, canActivate: [LoggedInGuard] },
    { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
    { path: 'signUp', component: SignUpComponent, canActivate: [LoggedOutGuard] },
    { path: 'creation', component: CreationComponent, canActivate: [LoggedInGuard] },
