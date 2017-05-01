@@ -12,11 +12,17 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var creationService_1 = require("../service/creationService");
 var dropdownProviderService_1 = require('../service/dropdownProviderService');
+var ng2_toasty_1 = require('ng2-toasty');
+var ng2_file_upload_1 = require('ng2-file-upload/ng2-file-upload');
 var CreationComponent = (function () {
-    function CreationComponent(creationsService, dropdownProviderService, router) {
+    function CreationComponent(creationsService, dropdownProviderService, router, toastyService) {
         this.creationsService = creationsService;
         this.dropdownProviderService = dropdownProviderService;
         this.router = router;
+        this.toastyService = toastyService;
+        this.fileUploadUrl = '/files/upload';
+        this.uploader = new ng2_file_upload_1.FileUploader({ url: this.fileUploadUrl });
+        this.types = [{ value: 'ATTACHMENT', name: 'Приложение' }, { value: 'RESEARCH_PASSPORT', name: 'Паспорт исследования' }, { value: 'SPECTR', name: 'Спектр' }];
         /**
          * данные для выпадающего списка (attachmentResearchObjectId)
          */
@@ -57,11 +63,6 @@ var CreationComponent = (function () {
     CreationComponent.prototype.refreshDropdowns = function () {
         var _this = this;
         //TODO для 5 выпадающих списков
-        /*
-        this.dropdownProviderService.getQualityStandarts().subscribe(data => this.qualityStandartsData = data , error => this.qualityStandartsData = new Array<DropdownItem>());
-        this.dropdownProviderService.getMaterials().subscribe(data => this.materialsData =  data, error => this.materialsData = new Array<DropdownItem>());
-        this.dropdownProviderService.getManufacturers().subscribe(data => this.manufacturerData =  data , error => this.manufacturerData = new Array<DropdownItem>());
-        */
         this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.resPassResObjectsData = data; }, function (error) { return _this.resPassResObjectsData = new Array(); });
         this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.attachmentResearchObject = data; }, function (error) { return _this.attachmentResearchObject = new Array(); });
     };
@@ -78,24 +79,87 @@ var CreationComponent = (function () {
         this.creationsService.createOrganization(this.organization);
     };
     CreationComponent.prototype.createAttachment = function () {
+        this.attachment.researchObject = this.getFirstIdOrNull(this.attachmentResearchObject);
+        this.attachment.fileId = this.getFirstIdOrNull(this.attachmentFile);
         this.creationsService.createAttachment(this.attachment);
     };
     CreationComponent.prototype.createResearchPassport = function () {
+        this.researchPassport.fileId = this.getFirstIdOrNull(this.resPassFile);
+        this.researchPassport.researchMethod = this.getFirstIdOrNull(this.resPassResMethod);
+        this.researchPassport.researchObject = this.getFirstIdOrNull(this.resPassResObject);
         this.creationsService.createResearchPassport(this.researchPassport);
     };
     CreationComponent.prototype.createResearchMethod = function () {
         this.creationsService.createResearchMethod(this.researchMethod);
     };
-    CreationComponent.prototype.toRegistr = function () {
-        this.router.navigate(['materials/build']);
+    CreationComponent.prototype.uploadFile = function () {
+        //TODO
+        console.log(this.uploader.options);
+        this.fileItem = this.uploader.queue[this.uploader.queue.length - 1];
+        ng2_file_upload_1.FileItem.prototype._form = this;
+        this.fileItem.onSuccess = this.onUploadSuccess;
+        this.fileItem.onError = this.onUploadError;
+        this.fileItem.onCancel = this.onUploadCancel;
+        this.fileItem.upload();
+        this.onUploadStart();
+    };
+    CreationComponent.prototype.onUploadStart = function () {
+        var toastOptions = {
+            title: "Загрузка файла:",
+            msg: "Загрузка файла началась!",
+            showClose: true,
+            timeout: 5000,
+            theme: 'default'
+        };
+        this.toastyService.info(toastOptions);
+    };
+    CreationComponent.prototype.onUploadSuccess = function () {
+        var toastOptions = {
+            title: "Загрузка файла:",
+            msg: "Файл успешно загружен!",
+            showClose: true,
+            timeout: 5000,
+            theme: 'default'
+        };
+        ng2_file_upload_1.FileItem.prototype._form.toastyService.success(toastOptions);
+    };
+    CreationComponent.prototype.onUploadError = function () {
+        var toastOptions = {
+            title: "Загрузка файла:",
+            msg: "Ошибка загрузки файла!",
+            showClose: true,
+            timeout: 5000,
+            theme: 'default'
+        };
+        ng2_file_upload_1.FileItem.prototype._form.toastyService.error(toastOptions);
+    };
+    CreationComponent.prototype.onUploadCancel = function () {
+        var toastOptions = {
+            title: "Загрузка файла:",
+            msg: "Загрузка файла отменена!",
+            showClose: true,
+            timeout: 5000,
+            theme: 'default'
+        };
+        ng2_file_upload_1.FileItem.prototype._form.toastyService.error(toastOptions);
+    };
+    CreationComponent.prototype.initUploader = function () {
+        var fileHeaders = [{ name: 'FILE_TYPE', value: this.fileType }, { name: 'FILE_NAME', value: this.fileName }];
+        this.uploader.options.headers = fileHeaders;
+    };
+    CreationComponent.prototype.getFirstIdOrNull = function (arr) {
+        return arr.length == 0 ? null : arr[0].id;
+    };
+    CreationComponent.prototype.uploadDisabled = function () {
+        return this.uploader.isUploading || !(this.fileType != null && this.fileType != '' && this.fileName != null && this.fileName != '');
     };
     CreationComponent = __decorate([
         core_1.Component({
             selector: '<creation-card>',
             templateUrl: '../../pages/card/creationCard.html',
-            providers: [creationService_1.CreationsService]
+            providers: [creationService_1.CreationsService, ng2_toasty_1.ToastyService]
         }), 
-        __metadata('design:paramtypes', [creationService_1.CreationsService, dropdownProviderService_1.DropdownProviderService, router_1.Router])
+        __metadata('design:paramtypes', [creationService_1.CreationsService, dropdownProviderService_1.DropdownProviderService, router_1.Router, ng2_toasty_1.ToastyService])
     ], CreationComponent);
     return CreationComponent;
 }());

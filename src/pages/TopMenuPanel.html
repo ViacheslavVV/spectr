@@ -32,6 +32,11 @@
                         <span>Эталонный<br/>спектр</span>
                     </a>
                 </li>
+                <li>
+                    <a routerLink="/creation" routerLinkActive="active">
+                        <span>Добаление<br/>данных</span>
+                    </a>
+                </li>
             </ul>
             <div *ngIf="isLoggedIn()" class="nav navbar-nav navbar-right notification">
                 <span><button class="btn-success navbar-btn" (click)="logOut()">Выйти</button></span>

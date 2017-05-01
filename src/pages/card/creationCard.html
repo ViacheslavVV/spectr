@@ -1,18 +1,7 @@
 
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
 <div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
-<!-- <multi-select-dropdown (selectionModelChange)="onUpdate($event)"  [items]="dropItems" [selectionModel]="selected"></multi-select-dropdown> -->
-	<!-- <div class="no-tab-hdr">
-        <div wicket:id="buttonsPanel">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
-                    <span>Сохранить</span>
-                </button>
-                <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="toRegistr()">
-                    <span>Закрыть</span>
-                </button>
-            </div>
-        </div>
-    </div> -->
+
     <div role="tabpanel" class="tab-pane active">
         <div class="custom-block-theme test-card form-horizontal">
             <div class="tab-hdr">
@@ -46,7 +35,49 @@
              <a href="#" data-target="#researchMethodModal" data-toggle="modal"><button class="btn-success btn" style="width: 100%;">Добавить метод исследования</button></a>
     </div>
     
-    
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+            <a routerLink="/material" routerLinkActive="active"><button type="button" class="btn-success btn" style="width: 100%;">Добавить материал</button></a>
+    </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+            <a routerLink="/material/build" routerLinkActive="active"><button type="button" class="btn-success btn" style="width: 100%;">Добавить строительный материал</button></a>
+    </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+            <a routerLink="/spectr" routerLinkActive="active"><button type="button" class="btn-success btn" style="width: 100%;">Добавить спектр</button></a>
+    </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+            <a routerLink="/researchObject" routerLinkActive="active"><button type="button" class="btn-success btn" style="width: 100%;">Добавить объект исследнования</button></a>
+    </div>
+
+    <div class="row" style="width: 100%; padding-bottom: 1%;">
+            <a routerLink="/spectr/etalon" routerLinkActive="active"><button type="button" class="btn-success btn" style="width: 100%;">Добавить эталонный спектр</button></a>
+    </div>
+
+    <div class="tab-hdr">
+            <h1 style="color: #fff">Загрузка файла</h1>
+    </div>
+
+     <div class="row" style="width: 100%; padding-bottom: 1%;">
+        <div class="form-group">
+            <label  class="label control-label col-lg-2">Тип файла:</label>
+            <div class="col-lg-3">
+                <select [(ngModel)]="fileType" class="form-control">
+                    <option *ngFor="let type of types" [ngValue]="type.value">{{type.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-5">
+                <label  class="control-label col-lg-6 label" title="Для последующего поиска файла">Название:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="fileName" class="inp-w100 form-control" type="text"/>
+                </div>
+            </div>
+            <div class="col-lg-2">
+            <a href="#" data-target="#uploadFileModal" data-toggle="modal"><button [disabled]="uploadDisabled()" class="btn-success btn" style="width: 100%;" (click)="initUploader()">Перейти к выбору файла</button></a>
+            </div>
+        </div>
+     </div>
 
 
     <!-- quality standart modal -->
@@ -338,6 +369,31 @@
                     </div>
                    <div class="col-sm-12">
                         <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Добавить" type="button" (click)="createResearchMethod()">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                  <div class="col-md-12">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                  </div>    
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- uploadFileModal -->
+        <div id="uploadFileModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h1 class="text-center" style="color: black;">Загрузить файл</h1>
+              </div>
+              <div class="modal-body row">
+                   <div>
+                       <input  style="display: inline;" type="file"  ng2FileSelect [uploader]="uploader" />
+                   </div>
+                   <div class="col-sm-12">
+                        <input class="btn btn-lg btn-primary btn-block" data-dismiss="modal" aria-hidden="true" value="Загрузить" type="button" (click)="uploadFile()">
                     </div>
               </div>
               <div class="modal-footer">

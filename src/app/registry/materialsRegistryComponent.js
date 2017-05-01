@@ -11,77 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var materialsService_1 = require('../service/materialsService');
 var globalSettings_1 = require('../service/globalSettings');
-var ng2_file_upload_1 = require('ng2-file-upload/ng2-file-upload');
-var ng2_toasty_1 = require('ng2-toasty');
-var ngx_modal_1 = require('ngx-modal');
 var URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
 var MaterialsRegistryComponent = (function () {
-    function MaterialsRegistryComponent(materialsService, toastyService) {
+    function MaterialsRegistryComponent(materialsService) {
         this.materialsService = materialsService;
-        this.toastyService = toastyService;
-        this.uploader = new ng2_file_upload_1.FileUploader({ url: URL });
         this.mode = 'Observable';
-        this.firstModal = new ngx_modal_1.Modal();
         this.filter = new Filter();
     }
-    MaterialsRegistryComponent.prototype.isEnabled = function () {
-        return this.fileItem != null && this.fileItem.isError;
-    };
-    MaterialsRegistryComponent.prototype.onUploadStart = function () {
-        var toastOptions = {
-            title: "Загрузка файла:",
-            msg: "Загрузка файла началась!",
-            showClose: true,
-            timeout: 5000,
-            theme: 'default'
-        };
-        this.toastyService.info(toastOptions);
-    };
-    MaterialsRegistryComponent.prototype.onUploadSuccess = function () {
-        var toastOptions = {
-            title: "Загрузка файла:",
-            msg: "Файл успешно загружен!",
-            showClose: true,
-            timeout: 5000,
-            theme: 'default'
-        };
-        ng2_file_upload_1.FileItem.prototype._form.toastyService.success(toastOptions);
-    };
-    MaterialsRegistryComponent.prototype.onUploadError = function () {
-        var toastOptions = {
-            title: "Загрузка файла:",
-            msg: "Ошибка загрузки файла!",
-            showClose: true,
-            timeout: 5000,
-            theme: 'default'
-        };
-        ng2_file_upload_1.FileItem.prototype._form.toastyService.error(toastOptions);
-    };
-    MaterialsRegistryComponent.prototype.onUploadCancel = function () {
-        var toastOptions = {
-            title: "Загрузка файла:",
-            msg: "Загрузка файла отменена!",
-            showClose: true,
-            timeout: 5000,
-            theme: 'default'
-        };
-        ng2_file_upload_1.FileItem.prototype._form.toastyService.error(toastOptions);
-    };
-    MaterialsRegistryComponent.prototype.aa = function () {
-        console.log(this.filter);
-        console.log(this.filter.getAsGetParams());
-        console.log(this.uploader);
-        this.getMaterials();
-    };
-    MaterialsRegistryComponent.prototype.uploadMyFile = function () {
-        this.fileItem = this.uploader.queue[this.uploader.queue.length - 1];
-        ng2_file_upload_1.FileItem.prototype._form = this;
-        this.fileItem.onSuccess = this.onUploadSuccess;
-        this.fileItem.onError = this.onUploadError;
-        this.fileItem.onCancel = this.onUploadCancel;
-        this.fileItem.upload();
-        this.onUploadStart();
-    };
     MaterialsRegistryComponent.prototype.ngAfterViewInit = function () {
     };
     MaterialsRegistryComponent.prototype.ngOnInit = function () { this.getMaterials(); };
@@ -95,9 +31,9 @@ var MaterialsRegistryComponent = (function () {
         core_1.Component({
             selector: '<materials>',
             templateUrl: '../pages/materialsRegistryComponent.html',
-            providers: [materialsService_1.MaterialsService, ng2_toasty_1.ToastyService]
+            providers: [materialsService_1.MaterialsService]
         }), 
-        __metadata('design:paramtypes', [materialsService_1.MaterialsService, ng2_toasty_1.ToastyService])
+        __metadata('design:paramtypes', [materialsService_1.MaterialsService])
     ], MaterialsRegistryComponent);
     return MaterialsRegistryComponent;
 }());

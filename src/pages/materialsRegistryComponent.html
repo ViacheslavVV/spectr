@@ -1,4 +1,3 @@
-<ng2-toasty [position]="'top-right'"></ng2-toasty>
 <div class="filter-registry test-filter form-horizontal" style="padding-top: 7%;">  
               <div class="row">
                             <div class="col-sm-6">
@@ -46,7 +45,7 @@
         <div class="col-sm-12 text-right">
             <div class="form-group">
                 <div class="btn-group btn-group-flt-srch">
-                    <button type="button" class="btn btn-default btn-fltr btn-fltr-srch" (click)="aa()">
+                    <button type="button" class="btn btn-default btn-fltr btn-fltr-srch">
                         <span class="fa fa-search"></span> Искать
                     </button>
                     <button type="button" class="btn btn-default btn-fltr btn-fltr-srch">
@@ -58,21 +57,6 @@
     </div>
   </div>
   <div class="tab-content container-fill" style="top:301px;">
-
-    <div class="row">
-        <button (click)="firstModal.open()">Загрузить файл</button>
-        <modal #firstModal>
-            <modal-header>
-                <h1>Выберите файл для загрузки</h1>
-            </modal-header>
-            <modal-content>
-                <input style="display: inline;" type="file" ng2FileSelect [uploader]="uploader" />
-            </modal-content>
-            <modal-footer>
-                <button class="btn btn-primary" (click)="uploadMyFile(); firstModal.close()">Загрузить</button>
-            </modal-footer>
-        </modal>
-    </div>
 
   <div class="tab-hdr clearfix">
         <h1>Реестр материалов</h1>
