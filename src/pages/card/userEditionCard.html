@@ -2,7 +2,7 @@
 <div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
 <!-- <multi-select-dropdown (selectionModelChange)="onUpdate($event)"  [items]="dropItems" [selectionModel]="selected"></multi-select-dropdown> -->
 	<div class="no-tab-hdr">
-        <div wicket:id="buttonsPanel">
+        <div>
             <div class="btn-group">
                 <button type="button" class="btn btn-default btn-no-brd btn-blue" (click)="onSave()">
                     <span>Сохранить</span>
@@ -54,5 +54,47 @@
             </div>
         </div>
     </div>
+    <div class="tab-hdr">
+        <h1 style="color: #fff">Смена пароля</h1>
+    </div>
+    <div *ngIf="changePassErr()" class="tab-hdr">
+        <h6 style="color: red;">{{changePassMsg}}</h6>
+    </div>
+    <div *ngIf="changePassSuccess()" class="tab-hdr">
+        <h6 style="color: green;">{{changePassMsg}}</h6>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Текущий пароль:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="userCurPass" class="inp-w100" type="password"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Новый пароль:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="userNewPass" class="inp-w100" type="password"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label  class="label control-label col-lg-6">Повторите новый пароль:</label>
+                <div class="col-lg-6">
+                    <input [(ngModel)]="userNewPassApprove" class="inp-w100" type="password"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-default btn-no-brd btn-blue" [disabled]="changePasswordDisabled()" (click)="changePassword()">
+                    <span>Сохранить</span>
+                </button>
 </div> </div>
     </div>

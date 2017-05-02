@@ -73,7 +73,8 @@ export class CreationComponent {
 	 * Обновить данные выпадающих списков
 	 */
 	private refreshDropdowns() : void {
-		//TODO для 5 выпадающих списков
+		//TODO для 2 выпадающих списков файлов
+		this.dropdownProviderService.getResearchMethods().subscribe(data => this.resPassResMethodsData =  data , error => this.resPassResMethodsData = new Array<DropdownItem>());
 		this.dropdownProviderService.getResearchObjecs().subscribe(data => this.resPassResObjectsData =  data , error => this.resPassResObjectsData = new Array<DropdownItem>());
 		this.dropdownProviderService.getResearchObjecs().subscribe(data => this.attachmentResearchObject =  data , error => this.attachmentResearchObject = new Array<DropdownItem>());
 	}

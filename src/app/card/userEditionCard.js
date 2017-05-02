@@ -17,9 +17,24 @@ var UserEditionCard = (function () {
         var _this = this;
         this.authService = authService;
         this.router = router;
+        this.changePassMsgErrPresent = false;
+        this.changePassMsgSuccessPresent = true;
+        this.changePassErrMsg = 'Ошибка при смене пароля!';
+        this.changePassSuccessMsg = 'Пароль успешно изменен!';
         this.user = new loginComponent_1.AppUserInfo();
         authService.getUserByLogin(localStorage.getItem('login')).subscribe(function (data) { return _this.user = data.json(); });
     }
+    UserEditionCard.prototype.changePassword = function () {
+        var _this = this;
+        this.authService.updatePass(this.userNewPass).subscribe(function (res) {
+            if (res) {
+                _this.onChangeSuccess();
+            }
+            else {
+                _this.onChangeError();
+            }
+        }, function (error) { return _this.onChangeError(); });
+    };
     UserEditionCard.prototype.onSave = function () {
         var _this = this;
         this.authService.updateUser(this.user).subscribe(function (res) {
@@ -36,6 +51,28 @@ var UserEditionCard = (function () {
     };
     UserEditionCard.prototype.onClose = function () {
         this.router.navigate(['']);
+    };
+    UserEditionCard.prototype.changePasswordDisabled = function () {
+        return !(this.strIsNotEmpty(this.userCurPass) && this.strIsNotEmpty(this.userNewPass) && this.userNewPass === this.userNewPassApprove);
+    };
+    UserEditionCard.prototype.onChangeSuccess = function () {
+        this.changePassMsgErrPresent = false;
+        this.changePassMsgSuccessPresent = true;
+        this.changePassMsg = this.changePassSuccessMsg;
+    };
+    UserEditionCard.prototype.changePassErr = function () {
+        return this.changePassMsgErrPresent == true && this.changePassMsg != null;
+    };
+    UserEditionCard.prototype.changePassSuccess = function () {
+        return this.changePassMsgSuccessPresent == true && this.changePassMsg != null;
+    };
+    UserEditionCard.prototype.onChangeError = function () {
+        this.changePassMsgErrPresent = true;
+        this.changePassMsgSuccessPresent = false;
+        this.changePassMsg = this.changePassErrMsg;
+    };
+    UserEditionCard.prototype.strIsNotEmpty = function (str) {
+        return str != null && str != '';
     };
     UserEditionCard = __decorate([
         core_1.Component({

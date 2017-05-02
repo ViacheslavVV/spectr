@@ -22,8 +22,9 @@ var AuthService = (function () {
         this.signUpUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/reg";
         this.logoutUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/logout";
         this.restorePasswordUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/au/passrec";
-        this.userGetUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/userGetUrl";
-        this.userUpdateUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/userUpdateUrl";
+        this.userGetUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/users/get";
+        this.userUpdateUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/users/edit";
+        this.userUpdPass = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/users/updpass";
     }
     AuthService.prototype.isLoggedIn = function () {
         return localStorage.getItem('loggedIn') == 'true';
@@ -74,6 +75,12 @@ var AuthService = (function () {
     };
     AuthService.prototype.updateUser = function (user) {
         return this.http.post(this.userUpdateUrl, user).map(function (res) { return res.json(); });
+    };
+    AuthService.prototype.updatePass = function (newPass) {
+        var headers = new http_1.Headers();
+        headers.append('login', localStorage.getItem('login'));
+        headers.append('password', newPass);
+        return this.http.post(this.userUpdPass, {}, headers).map(function (res) { return res.json(); });
     };
     AuthService = __decorate([
         core_1.Injectable(), 

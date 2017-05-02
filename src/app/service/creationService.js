@@ -14,15 +14,15 @@ var httpClient_1 = require('./httpClient');
 var ng2_file_upload_1 = require('ng2-file-upload/ng2-file-upload');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/map');
-var ATTACHMENT_FILE_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var RESEARCH_PASSPORT_FILE_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_ATTACHMENT_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_MANUFACTURER_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_ORGANIZATION_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_QUALITY_STANDART_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_RESEARCH_METHOD_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_RESEARCH_OBJECT_TYPE_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
-var CREATE_RESEARCH_PASSPORT_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
+var ATTACHMENT_FILE_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/attfiles';
+var RESEARCH_PASSPORT_FILE_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/resfiles';
+var CREATE_ATTACHMENT_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/attach/add';
+var CREATE_MANUFACTURER_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/manufacturers/add';
+var CREATE_ORGANIZATION_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/organization/add';
+var CREATE_QUALITY_STANDART_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/qstandarts/add';
+var CREATE_RESEARCH_METHOD_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/resmethod/add';
+var CREATE_RESEARCH_OBJECT_TYPE_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/rotype/add';
+var CREATE_RESEARCH_PASSPORT_URL = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/rpass/add';
 var CreationsService = (function () {
     function CreationsService(httpClient) {
         this.httpClient = httpClient;

@@ -14,15 +14,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-const ATTACHMENT_FILE_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const RESEARCH_PASSPORT_FILE_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_ATTACHMENT_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_MANUFACTURER_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_ORGANIZATION_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_QUALITY_STANDART_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_RESEARCH_METHOD_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_RESEARCH_OBJECT_TYPE_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
-const CREATE_RESEARCH_PASSPORT_URL = GlobalSettings.SERVER_ADDRESS+'/files/upload';
+const ATTACHMENT_FILE_URL = GlobalSettings.SERVER_ADDRESS+'/files/attfiles';
+const RESEARCH_PASSPORT_FILE_URL = GlobalSettings.SERVER_ADDRESS+'/files/resfiles';
+const CREATE_ATTACHMENT_URL = GlobalSettings.SERVER_ADDRESS+'/attach/add';
+const CREATE_MANUFACTURER_URL = GlobalSettings.SERVER_ADDRESS+'/manufacturers/add';
+const CREATE_ORGANIZATION_URL = GlobalSettings.SERVER_ADDRESS+'/organization/add';
+const CREATE_QUALITY_STANDART_URL = GlobalSettings.SERVER_ADDRESS+'/qstandarts/add';
+const CREATE_RESEARCH_METHOD_URL = GlobalSettings.SERVER_ADDRESS+'/resmethod/add';
+const CREATE_RESEARCH_OBJECT_TYPE_URL = GlobalSettings.SERVER_ADDRESS+'/rotype/add';
+const CREATE_RESEARCH_PASSPORT_URL = GlobalSettings.SERVER_ADDRESS+'/rpass/add';
 
 @Injectable()
 export class CreationsService {

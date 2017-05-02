@@ -20,8 +20,9 @@ export class AuthService {
   private signUpUrl : string = GlobalSettings.SERVER_ADDRESS+"/au/reg"; 
   private logoutUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/logout";
   private restorePasswordUrl : string = GlobalSettings.SERVER_ADDRESS + "/au/passrec";
-  private userGetUrl : string = GlobalSettings.SERVER_ADDRESS + "/userGetUrl";
-  private userUpdateUrl : string = GlobalSettings.SERVER_ADDRESS + "/userUpdateUrl";
+  private userGetUrl : string = GlobalSettings.SERVER_ADDRESS + "/users/get";
+  private userUpdateUrl : string = GlobalSettings.SERVER_ADDRESS + "/users/edit";
+  private userUpdPass : string = GlobalSettings.SERVER_ADDRESS + "/users/updpass";
 	constructor (private http: HttpClient) {
 	}
 
@@ -86,5 +87,12 @@ export class AuthService {
 
   public updateUser(user : AppUserInfo) : Observable<boolean> {
     return this.http.post(this.userUpdateUrl, user).map(res => res.json());
+  }
+
+  public updatePass(newPass : string) : Observable<boolean> {
+    let headers = new Headers();
+    headers.append('login', localStorage.getItem('login'));
+    headers.append('password', newPass);
+    return this.http.post(this.userUpdPass, {}, headers).map(res => res.json());
   }
 }
