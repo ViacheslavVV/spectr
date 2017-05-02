@@ -34,25 +34,25 @@ var CreationsService = (function () {
         this.researchPassportUploader = new ng2_file_upload_1.FileUploader({ url: RESEARCH_PASSPORT_FILE_URL, headers: [{ name: 'filename', value: fileName }] });
     };
     CreationsService.prototype.createAttachment = function (attachment) {
-        return this.httpClient.post(CREATE_ATTACHMENT_URL, attachment);
+        this.httpClient.post(CREATE_ATTACHMENT_URL, attachment).subscribe();
     };
     CreationsService.prototype.createManufacturer = function (manufacturer) {
-        return this.httpClient.post(CREATE_MANUFACTURER_URL, manufacturer);
+        this.httpClient.post(CREATE_MANUFACTURER_URL, manufacturer).subscribe();
     };
     CreationsService.prototype.createOrganization = function (organization) {
-        return this.httpClient.post(CREATE_ORGANIZATION_URL, organization);
+        this.httpClient.post(CREATE_ORGANIZATION_URL, organization).subscribe();
     };
     CreationsService.prototype.createQualityStandart = function (qualityStandart) {
-        return this.httpClient.post(CREATE_QUALITY_STANDART_URL, qualityStandart);
+        this.httpClient.post(CREATE_QUALITY_STANDART_URL, qualityStandart).subscribe();
     };
     CreationsService.prototype.createResearchMethod = function (researchMethod) {
-        return this.httpClient.post(CREATE_RESEARCH_METHOD_URL, researchMethod);
+        this.httpClient.post(CREATE_RESEARCH_METHOD_URL, researchMethod).subscribe();
     };
     CreationsService.prototype.createResearchObjectType = function (researchObjectType) {
-        return this.httpClient.post(CREATE_RESEARCH_OBJECT_TYPE_URL, researchObjectType);
+        this.httpClient.post(CREATE_RESEARCH_OBJECT_TYPE_URL, researchObjectType).subscribe();
     };
     CreationsService.prototype.createResearchPassport = function (researchPassport) {
-        return this.httpClient.post(CREATE_RESEARCH_PASSPORT_URL, researchPassport);
+        this.httpClient.post(CREATE_RESEARCH_PASSPORT_URL, researchPassport).subscribe();
     };
     CreationsService = __decorate([
         core_1.Injectable(), 

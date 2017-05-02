@@ -43,32 +43,32 @@ export class CreationsService {
 	}
 
 	
-    public createAttachment(attachment : Attachment) : Observable<any> {
-      return this.httpClient.post(CREATE_ATTACHMENT_URL, attachment);
+    public createAttachment(attachment : Attachment) : void {
+      this.httpClient.post(CREATE_ATTACHMENT_URL, attachment).subscribe();
     }
 
-    public createManufacturer(manufacturer : Manufacturer) : Observable<any> {
-      return this.httpClient.post(CREATE_MANUFACTURER_URL, manufacturer);
+    public createManufacturer(manufacturer : Manufacturer) : void {
+      this.httpClient.post(CREATE_MANUFACTURER_URL, manufacturer).subscribe();
     }
 
-    public createOrganization(organization : Organization) : Observable<any> {
-      return this.httpClient.post(CREATE_ORGANIZATION_URL, organization);
+    public createOrganization(organization : Organization) : void {
+      this.httpClient.post(CREATE_ORGANIZATION_URL, organization).subscribe();
     }
 
-    public createQualityStandart(qualityStandart : QualityStandart) : Observable<any> {
-      return this.httpClient.post(CREATE_QUALITY_STANDART_URL, qualityStandart);
+    public createQualityStandart(qualityStandart : QualityStandart) : void {
+      this.httpClient.post(CREATE_QUALITY_STANDART_URL, qualityStandart).subscribe();
     }
 
-    public createResearchMethod(researchMethod : ResearchMethod) : Observable<any> {
-      return this.httpClient.post(CREATE_RESEARCH_METHOD_URL, researchMethod);
+    public createResearchMethod(researchMethod : ResearchMethod) : void {
+      this.httpClient.post(CREATE_RESEARCH_METHOD_URL, researchMethod).subscribe();
     }
 
-    public createResearchObjectType(researchObjectType : ResearchObjectType) : Observable<any> {
-      return this.httpClient.post(CREATE_RESEARCH_OBJECT_TYPE_URL, researchObjectType);
+    public createResearchObjectType(researchObjectType : ResearchObjectType) : void {
+      this.httpClient.post(CREATE_RESEARCH_OBJECT_TYPE_URL, researchObjectType).subscribe();
     }
 
-    public createResearchPassport(researchPassport : ResearchPassport) : Observable<any> {
-      return this.httpClient.post(CREATE_RESEARCH_PASSPORT_URL, researchPassport);
+    public createResearchPassport(researchPassport : ResearchPassport) : void {
+      this.httpClient.post(CREATE_RESEARCH_PASSPORT_URL, researchPassport).subscribe();
     }
 
 

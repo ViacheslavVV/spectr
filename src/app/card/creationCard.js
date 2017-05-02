@@ -65,7 +65,7 @@ var CreationComponent = (function () {
         //TODO для 2 выпадающих списков файлов
         this.dropdownProviderService.getResearchMethods().subscribe(function (data) { return _this.resPassResMethodsData = data; }, function (error) { return _this.resPassResMethodsData = new Array(); });
         this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.resPassResObjectsData = data; }, function (error) { return _this.resPassResObjectsData = new Array(); });
-        this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.attachmentResearchObject = data; }, function (error) { return _this.attachmentResearchObject = new Array(); });
+        this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.attachmentResearchObjectsData = data; }, function (error) { return _this.attachmentResearchObjectsData = new Array(); });
     };
     CreationComponent.prototype.createQualityStandart = function () {
         this.creationsService.createQualityStandart(this.qualityStandart);
