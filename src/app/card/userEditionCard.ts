@@ -38,6 +38,7 @@ export class UserEditionCard {
   public onSave() : void {
     this.authService.updateUser(this.user).subscribe(res => {
       if (res) {
+        this.authService.updateUserData(this.user);
         this.onClose();
       } else {
         this.onError();

@@ -39,6 +39,7 @@ var UserEditionCard = (function () {
         var _this = this;
         this.authService.updateUser(this.user).subscribe(function (res) {
             if (res) {
+                _this.authService.updateUserData(_this.user);
                 _this.onClose();
             }
             else {

@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var creationService_1 = require("../service/creationService");
 var dropdownProviderService_1 = require('../service/dropdownProviderService');
+var globalSettings_1 = require('../service/globalSettings');
 var ng2_toasty_1 = require('ng2-toasty');
 var ng2_file_upload_1 = require('ng2-file-upload/ng2-file-upload');
 var CreationComponent = (function () {
@@ -20,7 +21,7 @@ var CreationComponent = (function () {
         this.dropdownProviderService = dropdownProviderService;
         this.router = router;
         this.toastyService = toastyService;
-        this.fileUploadUrl = '/files/upload';
+        this.fileUploadUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
         this.uploader = new ng2_file_upload_1.FileUploader({ url: this.fileUploadUrl });
         this.types = [{ value: 'ATTACHMENT', name: 'Приложение' }, { value: 'RESEARCH_PASSPORT', name: 'Паспорт исследования' }, { value: 'SPECTR', name: 'Спектр' }];
         /**

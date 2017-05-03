@@ -59,6 +59,12 @@ export class AuthService {
       });
   }
 
+  public updateUserData(user : any) {
+             localStorage.setItem('login', user.login);
+             localStorage.setItem('fio', user.firstName + ' ' + user.lastName);
+             localStorage.setItem('email', user.email);
+  }
+
   public logout() {
     localStorage.setItem('loggedIn', 'false');
     this.http.post(this.logoutUrl, {}).subscribe(data => console.log('loggedOut'));

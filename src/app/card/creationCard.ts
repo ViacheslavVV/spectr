@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CreationsService } from "../service/creationService";
 import { MutliSelectDropdownComponent, DropdownItem } from '../component/multiselectComponent';
 import { DropdownProviderService } from '../service/dropdownProviderService';
+import { GlobalSettings } from '../service/globalSettings';
 
 import { ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
 
@@ -17,7 +18,7 @@ import { FileItem, FileSelectDirective, FileDropDirective, FileUploader } from '
 })
 export class CreationComponent {
 
-	private fileUploadUrl = '/files/upload';
+	private fileUploadUrl = GlobalSettings.SERVER_ADDRESS + '/files/upload';
 
 	public uploader : FileUploader = new FileUploader({url : this.fileUploadUrl});
 

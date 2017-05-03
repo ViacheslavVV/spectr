@@ -52,6 +52,11 @@ var AuthService = (function () {
             return false;
         });
     };
+    AuthService.prototype.updateUserData = function (user) {
+        localStorage.setItem('login', user.login);
+        localStorage.setItem('fio', user.firstName + ' ' + user.lastName);
+        localStorage.setItem('email', user.email);
+    };
     AuthService.prototype.logout = function () {
         localStorage.setItem('loggedIn', 'false');
         this.http.post(this.logoutUrl, {}).subscribe(function (data) { return console.log('loggedOut'); });
