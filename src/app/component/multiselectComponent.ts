@@ -13,13 +13,13 @@ export interface DropdownItem {
         <span>{{getLabel()}}</span>
         &nbsp;<span class="caret"></span>
       </button>
-      <ul class="dropdown-menu dropdown-menu-form col-lg-12" [style.display]="isOpen ? 'block' : 'none'" style="overflow: scroll">
+      <ul class="dropdown-menu dropdown-menu-form col-lg-12" [style.display]="isOpen ? 'block' : 'none'" style="overflow: scroll; max-height: 300px;">
         <li *ngIf="allowMultiselect"><a href="#" (click)="deselectAll($event);"><span class="glyphicon glyphicon-remove" ></span>&nbsp;Отменить все</a></li>
       <li>
         <div class="dropdown-header">
           <div class="control-group">
             <div *ngIf="items.length >= 10" class="input-group">
-              <input type="text" class="form-control" [(ngModel)]="searchFilter" placeholder="Search" />
+              <input type="text" class="form-control" [(ngModel)]="searchFilter" (change)="filterChanged()" placeholder="Search" />
               <span class="glyphicon glyphicon-remove input-group-addon" style="top: 0px;" (click)="clearSearch()"></span>
             </div>
           </div>
