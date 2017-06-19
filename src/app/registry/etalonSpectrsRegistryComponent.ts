@@ -12,6 +12,7 @@ export class EtalonSpectrsRegistryComponent implements OnInit  {
   data: any[];
   mode = 'Observable';
   errorMessage: string;
+  currentImgSrc: string;
   
   constructor(private etalonSpectrService: EtalonSpectrsService) {
     this.filter = new Filter();
@@ -31,6 +32,10 @@ export class EtalonSpectrsRegistryComponent implements OnInit  {
                      .subscribe(
                        data => this.data = data,
                        error =>  this.errorMessage = <any>error);
+  }
+
+  imgClick(img : string) : void {
+    this.currentImgSrc = img;
   }
 }
 

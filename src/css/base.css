@@ -607,3 +607,10 @@ a:active {
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover  {
     background-color: inherit;
 }
+
+.img-modal-dialog {
+    margin-left: 20%;
+    margin-right: 20%;
+    min-width: 60%;
+    text-align: center;
+}

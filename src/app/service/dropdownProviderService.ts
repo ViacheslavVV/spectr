@@ -23,6 +23,7 @@ export class DropdownProviderService {
   private spectrLinesUrl = GlobalSettings.SERVER_ADDRESS+"/sline/idname";
   private organizationsUrl = GlobalSettings.SERVER_ADDRESS + "/organization/idname";
   private resMethodsUrl = GlobalSettings.SERVER_ADDRESS + "/resmethod/idname";
+  private resPasportFileUrl = GlobalSettings.SERVER_ADDRESS + "/specfiles";
 
 	constructor ( private httpClient : HttpClient) {
 	}
@@ -65,6 +66,10 @@ export class DropdownProviderService {
 
   getResearchMethods() : Observable<DropdownItem[]> {
     return this.httpClient.get(this.resMethodsUrl).map(this.extractData);
+  }
+
+  getResearchPassportFiles() : Observable<DropdownItem[]> {
+    return this.httpClient.get(this.resPasportFileUrl).map(this.extractData);
   }
 
 	private extractData(res: Response) {

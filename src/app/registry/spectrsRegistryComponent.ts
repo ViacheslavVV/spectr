@@ -13,6 +13,7 @@ export class SpectrsRegistryComponent implements OnInit  {
   data: any[];
   mode = 'Observable';
   errorMessage: string;
+  currentImgSrc : string;
 
   constructor (private spectrService : SpectrsService) {
     this.filter = new Filter();
@@ -30,8 +31,12 @@ export class SpectrsRegistryComponent implements OnInit  {
      console.log("getSpectrs component");
     this.spectrService.getSpectrs(this.filter)
                      .subscribe(
-                       data => this.data = data,
+                       data => {this.data = data; console.log(data);},
                        error =>  this.errorMessage = <any>error);
+  }
+
+  imgClick(img : string) : void {
+    this.currentImgSrc = img;
   }
 }
 

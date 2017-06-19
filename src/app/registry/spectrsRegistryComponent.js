@@ -26,7 +26,10 @@ var SpectrsRegistryComponent = (function () {
         var _this = this;
         console.log("getSpectrs component");
         this.spectrService.getSpectrs(this.filter)
-            .subscribe(function (data) { return _this.data = data; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (data) { _this.data = data; console.log(data); }, function (error) { return _this.errorMessage = error; });
+    };
+    SpectrsRegistryComponent.prototype.imgClick = function (img) {
+        this.currentImgSrc = img;
     };
     SpectrsRegistryComponent = __decorate([
         core_1.Component({

@@ -1,4 +1,4 @@
-
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
 <div class="filter-registry test-filter form-horizontal" style="padding-top: 7%; height:100%;">
 	<div class="no-tab-hdr">
         <div wicket:id="buttonsPanel">
@@ -29,9 +29,9 @@
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label  class="label control-label col-lg-6">SpectrBase:</label>
+                <label  class="label control-label col-lg-6">Файл:</label>
                 <div class="col-lg-6">
-                    <input [(ngModel)]="etalonSpectr.spectrBase" class="inp-w100" type="text"/>
+                    <input  style="display: inline;" type="file"  ng2FileSelect [uploader]="uploader" />
                 </div>
             </div>
         </div>

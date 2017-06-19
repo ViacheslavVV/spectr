@@ -12,12 +12,22 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var etalonSpectrsService_1 = require("../service/etalonSpectrsService");
 var dropdownProviderService_1 = require('../service/dropdownProviderService');
+var globalSettings_1 = require('../service/globalSettings');
+var ng2_toasty_1 = require('ng2-toasty');
+var ng2_file_upload_1 = require('ng2-file-upload/ng2-file-upload');
 var EtalonSpectrCardComponent = (function () {
-    function EtalonSpectrCardComponent(etalonSpectrsService, dropdownProviderService, router) {
+    function EtalonSpectrCardComponent(toastyService, etalonSpectrsService, dropdownProviderService, router) {
         var _this = this;
+        this.toastyService = toastyService;
         this.etalonSpectrsService = etalonSpectrsService;
         this.dropdownProviderService = dropdownProviderService;
         this.router = router;
+        this.fileUploadUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/uploadImg';
+        this.uploader = new ng2_file_upload_1.FileUploader({ url: this.fileUploadUrl });
+        /**
+         * ид файла спектра
+         */
+        this.spectrBaseId = null;
         /**
          * данные для выпадающего списка (materialId) allowMultiselect = false
          */
@@ -59,21 +69,75 @@ var EtalonSpectrCardComponent = (function () {
     EtalonSpectrCardComponent.prototype.getFirstIdOrNull = function (arr) {
         return arr.length == 0 ? null : arr[0].id;
     };
-    EtalonSpectrCardComponent.prototype.onSave = function () {
+    EtalonSpectrCardComponent.prototype.setFileId = function () {
+        this.etalonSpectr.spectrBase = this.spectrBaseId;
+    };
+    EtalonSpectrCardComponent.prototype.afterUpload = function () {
         var _this = this;
         this.setIdsToObject();
+        this.setFileId();
+        console.log(this.etalonSpectr);
         this.etalonSpectrsService.createEtalonSpectr(this.etalonSpectr).subscribe(function (data) { console.log(data); _this.toRegistr(); }, function (error) { return console.log(error); });
     };
     EtalonSpectrCardComponent.prototype.toRegistr = function () {
         this.router.navigate(['spectrs/etalon']);
     };
+    EtalonSpectrCardComponent.prototype.onSave = function () {
+        var _this = this;
+        //TODO
+        this.fileItem = this.uploader.queue[this.uploader.queue.length - 1];
+        this.fileItem.onSuccess = function (response, status, headers) {
+            _this.spectrBaseId = JSON.parse(response).id;
+            var toastOptions = {
+                title: "Загрузка файла:",
+                msg: "Файл успешно загружен!",
+                showClose: true,
+                timeout: 5000,
+                theme: 'default'
+            };
+            _this.toastyService.success(toastOptions);
+            _this.afterUpload();
+        };
+        this.fileItem.onError = function () {
+            var toastOptions = {
+                title: "Загрузка файла:",
+                msg: "Ошибка загрузки файла!",
+                showClose: true,
+                timeout: 5000,
+                theme: 'default'
+            };
+            _this.toastyService.error(toastOptions);
+        };
+        this.fileItem.onCancel = function () {
+            var toastOptions = {
+                title: "Загрузка файла:",
+                msg: "Загрузка файла отменена!",
+                showClose: true,
+                timeout: 5000,
+                theme: 'default'
+            };
+            _this.toastyService.error(toastOptions);
+        };
+        this.fileItem.upload();
+        this.onUploadStart();
+    };
+    EtalonSpectrCardComponent.prototype.onUploadStart = function () {
+        var toastOptions = {
+            title: "Загрузка файла:",
+            msg: "Загрузка файла началась!",
+            showClose: true,
+            timeout: 5000,
+            theme: 'default'
+        };
+        this.toastyService.info(toastOptions);
+    };
     EtalonSpectrCardComponent = __decorate([
         core_1.Component({
             selector: '<etalon-spectr>',
             templateUrl: '../../pages/card/etalonSpectrCard.html',
-            providers: [etalonSpectrsService_1.EtalonSpectrsService]
+            providers: [etalonSpectrsService_1.EtalonSpectrsService, ng2_toasty_1.ToastyService]
         }), 
-        __metadata('design:paramtypes', [etalonSpectrsService_1.EtalonSpectrsService, dropdownProviderService_1.DropdownProviderService, router_1.Router])
+        __metadata('design:paramtypes', [ng2_toasty_1.ToastyService, etalonSpectrsService_1.EtalonSpectrsService, dropdownProviderService_1.DropdownProviderService, router_1.Router])
     ], EtalonSpectrCardComponent);
     return EtalonSpectrCardComponent;
 }());

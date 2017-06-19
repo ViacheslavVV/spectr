@@ -26,6 +26,7 @@ var DropdownProviderService = (function () {
         this.spectrLinesUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/sline/idname";
         this.organizationsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/organization/idname";
         this.resMethodsUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/resmethod/idname";
+        this.resPasportFileUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + "/specfiles";
     }
     DropdownProviderService.prototype.getMaterials = function () {
         return this.httpClient.get(this.materialsDropdownUrl).map(this.extractData);
@@ -56,6 +57,9 @@ var DropdownProviderService = (function () {
     };
     DropdownProviderService.prototype.getResearchMethods = function () {
         return this.httpClient.get(this.resMethodsUrl).map(this.extractData);
+    };
+    DropdownProviderService.prototype.getResearchPassportFiles = function () {
+        return this.httpClient.get(this.resPasportFileUrl).map(this.extractData);
     };
     DropdownProviderService.prototype.extractData = function (res) {
         var body = res.json();

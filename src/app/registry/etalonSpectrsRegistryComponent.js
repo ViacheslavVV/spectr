@@ -28,6 +28,9 @@ var EtalonSpectrsRegistryComponent = (function () {
         this.etalonSpectrService.getEtalonSpectrs(this.filter)
             .subscribe(function (data) { return _this.data = data; }, function (error) { return _this.errorMessage = error; });
     };
+    EtalonSpectrsRegistryComponent.prototype.imgClick = function (img) {
+        this.currentImgSrc = img;
+    };
     EtalonSpectrsRegistryComponent = __decorate([
         core_1.Component({
             selector: '<etalon-spectrs>',

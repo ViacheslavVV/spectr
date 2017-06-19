@@ -1,5 +1,5 @@
-import { Injectable }              from '@angular/core';
-import { Response }          from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { GlobalSettings } from '../service/globalSettings';
 import { Filter } from '../registry/materialsRegistryComponent';
@@ -22,20 +22,19 @@ export class MaterialsService {
 	private extractData(res: Response) {
     let body = res.json();
     return body || { };
-  	}
+  }
 
 	public getMaterials (filter : Filter): Observable<any[]> {
 		console.log("getMaterials service");
     return this.http.get(this.getUrlForFetchWithParams(filter)).map(this.extractData);
-  	}
-
-  	private getUrlForFetchWithParams(filter : Filter) : string {
-    	let params = filter.getAsGetParams(); 
-    return params == "" ? this.materialsUrl : this.materialsUrlWithParams + "?"+params;
-    }
-
-  public createMaterial(material : Material) : Observable<Response> {
-     return this.http.post(this.createMaterialUrl, material);
   }
 
+  private getUrlForFetchWithParams(filter : Filter) : string {
+   	let params = filter.getAsGetParams(); 
+  return params == "" ? this.materialsUrl : this.materialsUrlWithParams + "?"+params;
+  }
+
+  public createMaterial(material : Material) : Observable<Response> {
+    return this.http.post(this.createMaterialUrl, material);
+  }
 }

@@ -18,7 +18,7 @@ import { FileItem, FileSelectDirective, FileDropDirective, FileUploader } from '
 })
 export class CreationComponent {
 
-	private fileUploadUrl = GlobalSettings.SERVER_ADDRESS + '/files/upload';
+	private fileUploadUrl = GlobalSettings.SERVER_ADDRESS + '/files/uploadImg';
 
 	public uploader : FileUploader = new FileUploader({url : this.fileUploadUrl});
 
@@ -75,6 +75,7 @@ export class CreationComponent {
 	 */
 	private refreshDropdowns() : void {
 		//TODO для 2 выпадающих списков файлов
+		this.dropdownProviderService.getResearchPassportFiles().subscribe(data => {this.resPassFilesData = data; console.log(data);}, error => this.resPassFilesData = new Array<DropdownItem>());
 		this.dropdownProviderService.getResearchMethods().subscribe(data => this.resPassResMethodsData =  data , error => this.resPassResMethodsData = new Array<DropdownItem>());
 		this.dropdownProviderService.getResearchObjecs().subscribe(data => this.resPassResObjectsData =  data , error => this.resPassResObjectsData = new Array<DropdownItem>());
 		this.dropdownProviderService.getResearchObjecs().subscribe(data => this.attachmentResearchObjectsData =  data , error => this.attachmentResearchObjectsData = new Array<DropdownItem>());
@@ -145,7 +146,10 @@ export class CreationComponent {
        this.toastyService.info(toastOptions);
   }
 
-  onUploadSuccess() {
+  onUploadSuccess(response: string, status : number, headers : any) {
+  	console.log(JSON.parse(response));
+  	console.log(status);
+  	console.log(headers);
     var toastOptions:ToastOptions = {
             title: "Загрузка файла:",
             msg: "Файл успешно загружен!",

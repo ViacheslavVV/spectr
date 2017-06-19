@@ -27,12 +27,6 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label class="label  control-label col-md-offset-2 col-sm-4">Название спектральной линии:</label>
-                  <div class="col-sm-5">
-                    <input [(ngModel)]="filter.spectrLineName" type="text" class="inp-w100"/>
-                  </div>
-                </div>
               </div>
               </div>
     <div class="row">
@@ -63,26 +57,24 @@
   <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
     <tr>
-        <th style="width: 20%">
+        <th style="width: 25%"></th>
+        <th style="width: 25%">
             <mfDefaultSorter by="waveLength">Длина волны</mfDefaultSorter>
         </th>
-        <th style="width: 20%">
+        <th style="width: 25%">
             <mfDefaultSorter by="intensity">Интенсивность</mfDefaultSorter>
         </th>
-        <th style="width: 30%">
-            <mfDefaultSorter by="chemicalElementName">Название хим. элемента</mfDefaultSorter>
-        </th>
-        <th style="width: 30%">
-            <mfDefaultSorter by="spectrLineName">Название спектральной линии</mfDefaultSorter>
+        <th style="width: 25%">
+            <mfDefaultSorter by="chemicalElementName">Химический элемент</mfDefaultSorter>
         </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of mf.data">
+        <td style="text-align: center;"><a href="#" data-target="#imageModal" data-toggle="modal"><img style="max-height: 25px;" src="{{item.spectrBase}}" (click)="imgClick($event.toElement.currentSrc)"></a></td>
         <td>{{item.waveLength}}</td>
         <td>{{item.intensity}}</td>
         <td>{{item.chemicalElementName}}</td>
-        <td>{{item.spectrLineName}}</td>
     </tr>
     </tbody>
     <tfoot>
@@ -94,3 +86,20 @@
     </tfoot>
 </table>
 </div>
+
+<div id="imageModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" class="img-modal-dialog">
+          <div class="modal-content" style="margin-top: 2%;">
+              <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <img style="max-width: 90%;" src="{{currentImgSrc}}">
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>

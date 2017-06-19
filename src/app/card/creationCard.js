@@ -21,7 +21,7 @@ var CreationComponent = (function () {
         this.dropdownProviderService = dropdownProviderService;
         this.router = router;
         this.toastyService = toastyService;
-        this.fileUploadUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/upload';
+        this.fileUploadUrl = globalSettings_1.GlobalSettings.SERVER_ADDRESS + '/files/uploadImg';
         this.uploader = new ng2_file_upload_1.FileUploader({ url: this.fileUploadUrl });
         this.types = [{ value: 'ATTACHMENT', name: 'Приложение' }, { value: 'RESEARCH_PASSPORT', name: 'Паспорт исследования' }, { value: 'SPECTR', name: 'Спектр' }];
         /**
@@ -64,6 +64,7 @@ var CreationComponent = (function () {
     CreationComponent.prototype.refreshDropdowns = function () {
         var _this = this;
         //TODO для 2 выпадающих списков файлов
+        this.dropdownProviderService.getResearchPassportFiles().subscribe(function (data) { _this.resPassFilesData = data; console.log(data); }, function (error) { return _this.resPassFilesData = new Array(); });
         this.dropdownProviderService.getResearchMethods().subscribe(function (data) { return _this.resPassResMethodsData = data; }, function (error) { return _this.resPassResMethodsData = new Array(); });
         this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.resPassResObjectsData = data; }, function (error) { return _this.resPassResObjectsData = new Array(); });
         this.dropdownProviderService.getResearchObjecs().subscribe(function (data) { return _this.attachmentResearchObjectsData = data; }, function (error) { return _this.attachmentResearchObjectsData = new Array(); });
@@ -115,7 +116,10 @@ var CreationComponent = (function () {
         };
         this.toastyService.info(toastOptions);
     };
-    CreationComponent.prototype.onUploadSuccess = function () {
+    CreationComponent.prototype.onUploadSuccess = function (response, status, headers) {
+        console.log(JSON.parse(response));
+        console.log(status);
+        console.log(headers);
         var toastOptions = {
             title: "Загрузка файла:",
             msg: "Файл успешно загружен!",
